@@ -1,0 +1,77 @@
+generated: '2026-09-23'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://developers.oag.com/whatsnew
+sources:
+- https://developers.oag.com/whatsnew
+- https://knowledge.oag.com/docs/flight-info-api-migration-fvxml.md
+- https://knowledge.oag.com/docs/flight-info-alerts-migration-fv-dynamic.md
+- https://knowledge.oag.com/docs/flight-info-alerts-migration-fnb.md
+entries:
+- breaking: false
+  highlights:
+  - 'Three new fields are now available within each leg object in the Connections API: DepartureTerminal — code of the terminal at which the flight
+    departs at the departure airport.'
+  - ArrivalTerminal — code of the terminal at which the flight arrives at the arrival airport.
+  - IntermediateAirportsIata — IATA codes of airports where the flight makes intermediate stops, excluding departure and arrival airports.
+  date: '2026-06-10'
+- breaking: false
+  highlights:
+  - The capabilities of the ServiceType filter has been expanded and is now available for Flight Info API.
+  - In addition to previously supported filtering by high level group names "Passenger" and "Cargo", more granular filtering is now also supported
+    by accepting individual IATA service type codes (e.g. J, G, U).
+  - No changes to the response schema — this is a data filtering improvement.
+  date: '2026-04-16'
+- breaking: false
+  highlights:
+  - The IncludeDiverted query parameter is now available for Flight Info API.
+  - When set to true and used with a single ArrivalAirport parameter and Content parameter including Status, the API returns flights that were
+    diverted to the specified arrival airport, in addition to flights originally scheduled to arrive there.
+  date: '2026-01-21'
+- breaking: false
+  highlights:
+  - A new map field has been added to the Flight Info API and is returned when the flight status is inAir.
+  - It provides a link to a tracker map that allows you to view the plane’s position in real time.
+  date: '2025-06-26'
+- breaking: false
+  highlights:
+  - The Flight Info API has been updated to include recovery flights when filtering by the service type "Passenger".
+  - This change ensures that all relevant passenger-related flights, including recovery operations, are returned in the response.
+  date: '2025-06-03'
+- breaking: true
+  highlights:
+  - The v1 version of the Flight Info API has been permanently removed following the announced sunset period.
+  - All requests to v1 endpoints will now receive a 404 Not Found response.
+  - Please use the Flight Info - v2 for continued service.
+  date: '2025-04-14'
+- breaking: false
+  highlights:
+  - With the addition of the Codeshare filter, Flight Info API is now able to filter results by operating or marketing flights.
+  - Codeshare can be filtered by specifying either Operating or Marketing.
+  date: '2024-11-05'
+- breaking: false
+  highlights:
+  - The Flight Info API now returns Distances in kilometers, miles and nautical miles.
+  date: '2024-07-03'
+- breaking: false
+  highlights:
+  - 'Diverted Flights: Status messages for diverted flights are now included under the original flight.'
+  - 'Recovery Flights: When a recovery flight occurs, it is created as an unscheduled flight and includes a link to the original scheduled flight.'
+  date: '2024-06-18'
+- breaking: false
+  highlights:
+  - The Flight Info API now returns a hyperlink from a recovery flight to the original scheduled flight.
+  - It is provided as property originalFlight.
+  date: '2024-06-12'
+- breaking: false
+  highlights:
+  - The Flight Info API now has a new Single Direct Flight endpoint enabling you to retrieve a specific flight schedule by instance key and departure
+    date.
+  date: '2024-05-13'
+- breaking: false
+  highlights:
+  - The Flight Info API now returns Cargo Tonnage.
+  date: '2024-04-15'
+current_version: v2
+note: Versioning scheme is based on API major versions (e.g., v1, v2) as referenced in the changelog.
+docs: https://developers.oag.com/whatsnew

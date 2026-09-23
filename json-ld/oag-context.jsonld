@@ -1,0 +1,318 @@
+{
+  "@context": {
+    "@vocab": "https://oag.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "oag": "https://oag.com/schema#",
+    "GetAlertsResponse": "oag:GetAlertsResponse",
+    "PatchAlertsRequest": "oag:PatchAlertsRequest",
+    "alertId": {
+      "@id": "oag:alertId",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "oag:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "oag:description",
+      "@type": "xsd:string"
+    },
+    "iataCarrierCode": {
+      "@id": "oag:iataCarrierCode",
+      "@type": "xsd:string"
+    },
+    "icaoCarrierCode": {
+      "@id": "oag:icaoCarrierCode",
+      "@type": "xsd:string"
+    },
+    "flightNumber": {
+      "@id": "oag:flightNumber",
+      "@type": "xsd:integer"
+    },
+    "fromFlight": {
+      "@id": "oag:fromFlight",
+      "@type": "xsd:integer"
+    },
+    "toFlight": {
+      "@id": "oag:toFlight",
+      "@type": "xsd:integer"
+    },
+    "departureAirport": {
+      "@id": "oag:departureAirport",
+      "@type": "xsd:string"
+    },
+    "arrivalAirport": {
+      "@id": "oag:arrivalAirport",
+      "@type": "xsd:string"
+    },
+    "alertType": {
+      "@id": "oag:alertType",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "oag:active",
+      "@type": "xsd:boolean"
+    },
+    "content": {
+      "@id": "oag:content",
+      "@type": "xsd:string"
+    },
+    "departureDate": {
+      "@id": "oag:departureDate",
+      "@type": "xsd:string"
+    },
+    "arrivalDate": {
+      "@id": "oag:arrivalDate",
+      "@type": "xsd:string"
+    },
+    "schedules": {
+      "@id": "oag:schedules",
+      "@type": "xsd:boolean"
+    },
+    "status": {
+      "@id": "oag:status",
+      "@type": "xsd:boolean"
+    },
+    "gaFlights": {
+      "@id": "oag:gaFlights",
+      "@type": "xsd:boolean"
+    },
+    "unscheduledFlights": {
+      "@id": "oag:unscheduledFlights",
+      "@type": "xsd:boolean"
+    },
+    "codeshare": {
+      "@id": "oag:codeshare",
+      "@type": "xsd:boolean"
+    },
+    "estimatedArrivalTimeThreshold": {
+      "@id": "oag:estimatedArrivalTimeThreshold",
+      "@type": "xsd:integer"
+    },
+    "estimatedDepartureTimeThreshold": {
+      "@id": "oag:estimatedDepartureTimeThreshold",
+      "@type": "xsd:integer"
+    },
+    "statusChangeFilters": {
+      "@id": "oag:statusChangeFilters"
+    },
+    "statusChangeFilters.baggage": {
+      "@id": "oag:statusChangeFilters.baggage",
+      "@type": "xsd:boolean"
+    },
+    "statusChangeFilters.aircraftRegistrationNumber": {
+      "@id": "oag:statusChangeFilters.aircraftRegistrationNumber",
+      "@type": "xsd:boolean"
+    },
+    "statusChangeFilters.gates": {
+      "@id": "oag:statusChangeFilters.gates",
+      "@type": "xsd:boolean"
+    },
+    "statusChangeFilters.terminal": {
+      "@id": "oag:statusChangeFilters.terminal",
+      "@type": "xsd:boolean"
+    },
+    "statusChangeFilters.seats": {
+      "@id": "oag:statusChangeFilters.seats",
+      "@type": "xsd:boolean"
+    },
+    "statusChangeFilters.aircraftType": {
+      "@id": "oag:statusChangeFilters.aircraftType",
+      "@type": "xsd:boolean"
+    },
+    "PatchAlertsResponse": "oag:PatchAlertsResponse",
+    "PostAlertsRequest": "oag:PostAlertsRequest",
+    "accountId": {
+      "@id": "oag:accountId",
+      "@type": "xsd:string"
+    },
+    "PostAlertsResponse": "oag:PostAlertsResponse",
+    "DeleteAlertsAlertidResponse": "oag:DeleteAlertsAlertidResponse",
+    "GetFlightConnectionsResponse": "oag:GetFlightConnectionsResponse",
+    "GetFlightInfoAlertsAccountsAccountidAccesskeyResponse": "oag:GetFlightInfoAlertsAccountsAccountidAccesskeyResponse",
+    "PatchFlightInfoAlertsAlertsRequest": "oag:PatchFlightInfoAlertsAlertsRequest",
+    "PatchFlightInfoAlertsAlertsResponse": "oag:PatchFlightInfoAlertsAlertsResponse",
+    "DeleteFlightInfoAlertsAlertsAlertidResponse": "oag:DeleteFlightInfoAlertsAlertsAlertidResponse",
+    "GetFlightInfoAlertsAlertsAlertidResponse": "oag:GetFlightInfoAlertsAlertsAlertidResponse",
+    "createdTimestamp": {
+      "@id": "oag:createdTimestamp",
+      "@type": "xsd:string"
+    },
+    "lastUpdatedTimestamp": {
+      "@id": "oag:lastUpdatedTimestamp",
+      "@type": "xsd:string"
+    },
+    "deleted": {
+      "@id": "oag:deleted",
+      "@type": "xsd:boolean"
+    },
+    "changeIndicator": {
+      "@id": "oag:changeIndicator",
+      "@type": "xsd:boolean"
+    },
+    "GetFlightInfoAlertsProfileAccountidResponse": "oag:GetFlightInfoAlertsProfileAccountidResponse",
+    "firstName": {
+      "@id": "oag:firstName",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "oag:lastName",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "oag:email",
+      "@type": "xsd:string"
+    },
+    "secondaryEmail": {
+      "@id": "oag:secondaryEmail",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "oag:country",
+      "@type": "xsd:string"
+    },
+    "companyName": {
+      "@id": "oag:companyName",
+      "@type": "xsd:string"
+    },
+    "PostFlightInfoAlertsFlightinfoalertidRequest": "oag:PostFlightInfoAlertsFlightinfoalertidRequest",
+    "PostFlightInfoAlertsFlightinfoalertidResponse": "oag:PostFlightInfoAlertsFlightinfoalertidResponse",
+    "GetFlightInstancesResponse": "oag:GetFlightInstancesResponse",
+    "data": {
+      "@id": "oag:data",
+      "@container": "@list"
+    },
+    "paging": {
+      "@id": "oag:paging"
+    },
+    "GetFlightInstancesDeparturedateScheduleinstancekeyResponse": "oag:GetFlightInstancesDeparturedateScheduleinstancekeyResponse",
+    "bookingClasses": {
+      "@id": "oag:bookingClasses",
+      "@container": "@list"
+    },
+    "freightClasses": {
+      "@id": "oag:freightClasses",
+      "@container": "@list"
+    },
+    "restrictions": {
+      "@id": "oag:restrictions",
+      "@container": "@list"
+    },
+    "planeChangeWithoutAircraftChange": {
+      "@id": "oag:planeChangeWithoutAircraftChange",
+      "@type": "xsd:boolean"
+    },
+    "onTimePerformance": {
+      "@id": "oag:onTimePerformance"
+    },
+    "inFlightServices": {
+      "@id": "oag:inFlightServices",
+      "@container": "@list"
+    },
+    "automatedCheckIn": {
+      "@id": "oag:automatedCheckIn",
+      "@type": "xsd:boolean"
+    },
+    "electronicTicketing": {
+      "@id": "oag:electronicTicketing",
+      "@type": "xsd:boolean"
+    },
+    "secureFlightIndicator": {
+      "@id": "oag:secureFlightIndicator",
+      "@type": "xsd:boolean"
+    },
+    "governmentApproval": {
+      "@id": "oag:governmentApproval",
+      "@type": "xsd:boolean"
+    },
+    "statusDetails": {
+      "@id": "oag:statusDetails",
+      "@container": "@list"
+    },
+    "seatingCapacity": {
+      "@id": "oag:seatingCapacity"
+    },
+    "carrier": {
+      "@id": "oag:carrier"
+    },
+    "serviceSuffix": {
+      "@id": "oag:serviceSuffix",
+      "@type": "xsd:string"
+    },
+    "sequenceNumber": {
+      "@id": "oag:sequenceNumber",
+      "@type": "xsd:integer"
+    },
+    "flightType": {
+      "@id": "oag:flightType",
+      "@type": "xsd:string"
+    },
+    "departure": {
+      "@id": "oag:departure"
+    },
+    "arrival": {
+      "@id": "oag:arrival"
+    },
+    "elapsedTime": {
+      "@id": "oag:elapsedTime",
+      "@type": "xsd:integer"
+    },
+    "cargoTonnage": {
+      "@id": "oag:cargoTonnage",
+      "@type": "xsd:decimal"
+    },
+    "aircraftType": {
+      "@id": "oag:aircraftType"
+    },
+    "serviceType": {
+      "@id": "oag:serviceType"
+    },
+    "segmentInfo": {
+      "@id": "oag:segmentInfo"
+    },
+    "distance": {
+      "@id": "oag:distance"
+    },
+    "scheduleInstanceKey": {
+      "@id": "oag:scheduleInstanceKey",
+      "@type": "xsd:string"
+    },
+    "statusKey": {
+      "@id": "oag:statusKey",
+      "@type": "xsd:string"
+    },
+    "originalFlight": {
+      "@id": "oag:originalFlight",
+      "@type": "xsd:string"
+    },
+    "map": {
+      "@id": "oag:map",
+      "@type": "xsd:string"
+    },
+    "GetFlightsResponse": "oag:GetFlightsResponse",
+    "GetLocationsResponse": "oag:GetLocationsResponse",
+    "PostProfileRequest": "oag:PostProfileRequest",
+    "PostProfileResponse": "oag:PostProfileResponse",
+    "evtPrimaryConnectionString": {
+      "@id": "oag:evtPrimaryConnectionString",
+      "@type": "xsd:string"
+    },
+    "evtSecondaryConnectionString": {
+      "@id": "oag:evtSecondaryConnectionString",
+      "@type": "xsd:string"
+    },
+    "PatchProfileAccountidRequest": "oag:PatchProfileAccountidRequest",
+    "PatchProfileAccountidResponse": "oag:PatchProfileAccountidResponse",
+    "GetStatusResponse": "oag:GetStatusResponse",
+    "GetDeparturedateScheduleinstancekeyResponse": "oag:GetDeparturedateScheduleinstancekeyResponse"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "OAG API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects OAG's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-09-23) from openapi/_ae-authored/oag-openapi-generated.yml.",
+  "dcterms:created": "2026-09-23",
+  "dcterms:source": [
+    "openapi/_ae-authored/oag-openapi-generated.yml"
+  ]
+}

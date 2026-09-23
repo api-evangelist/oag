@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/oag/main/json-schema/oag-patch-alerts-request-schema.json",
+  "title": "PatchAlertsRequest",
+  "x-generated": "2026-09-23",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PatchAlertsRequest",
+  "type": "object",
+  "properties": {
+    "alertId": {
+      "type": "string",
+      "description": "Alphanumeric characters generated on the creation of the alert."
+    },
+    "name": {
+      "type": "string",
+      "description": "Some text assigning a name to the alert."
+    },
+    "description": {
+      "type": "string",
+      "description": "Some text describing the purpose of the alert."
+    },
+    "iataCarrierCode": {
+      "type": "string",
+      "description": "A two-character code assigned by the IATA to international airlines. Optional unless updating an alert to alertType \"Carrier\", in which case iataCarrierCode and/or icaoCarrierCode must be supplied."
+    },
+    "icaoCarrierCode": {
+      "type": "string",
+      "description": "A three-character code assigned by the ICAO to international airlines. Optional unless updating an alert to alertType \"Carrier\", in which case iataCarrierCode and/or icaoCarrierCode must be supplied."
+    },
+    "flightNumber": {
+      "type": "integer",
+      "description": "A numeric part (up to four digits) of a flight designator."
+    },
+    "fromFlight": {
+      "type": "integer",
+      "description": "A numeric part (up to four digits) of a flight designator."
+    },
+    "toFlight": {
+      "type": "integer",
+      "description": "A numeric part (up to four digits) of a flight designator."
+    },
+    "departureAirport": {
+      "type": "string",
+      "description": "A Three-letter code assigned by the IATA to an airport location representing the departure airport. Optional unless updating an alert to alertType \"Port\", in which case departureAirport and/or arrivalAirport must be supplied."
+    },
+    "arrivalAirport": {
+      "type": "string",
+      "description": "A Three-letter code assigned by the IATA to an airport location representing the arrival airport. Optional unless creating an alert to alertType \"Port\", in which case departureAirport and/or arrivalAirport must be supplied."
+    },
+    "alertType": {
+      "type": "string",
+      "description": "The type of alert being configured. Accepted values are \"Global\", \"Carrier\" or \"Port\"."
+    },
+    "active": {
+      "type": "boolean",
+      "description": "A true/false value to enable/disable the alert."
+    },
+    "content": {
+      "type": "string",
+      "description": "If the string \"seats, changeindicator\" is specified, seat and change indicator data will be included in the alert output."
+    },
+    "departureDate": {
+      "type": "string",
+      "description": "A date in the format yyyy-MM-dd for flight departures."
+    },
+    "arrivalDate": {
+      "type": "string",
+      "description": "A date in the format yyyy-MM-dd for flight arrivals."
+    },
+    "schedules": {
+      "type": "boolean",
+      "description": "A true/false value to enable/disable the inclusion of schedules flight updates in the event feed."
+    },
+    "status": {
+      "type": "boolean",
+      "description": "A true/false value to enable/disable the inclusion of status flight updates in the event feed."
+    },
+    "gaFlights": {
+      "type": "boolean",
+      "description": "A true/false value to enable/disable the inclusion of GA flight updates in the event feed."
+    },
+    "unscheduledFlights": {
+      "type": "boolean",
+      "description": "A true/false value to enable/disable the inclusion of unscheduled flight updates in the event feed."
+    },
+    "codeshare": {
+      "type": "boolean",
+      "description": "A true/false value to enable/disable the inclusion of marketing flight updates in the event feed. Defaults to true."
+    },
+    "estimatedArrivalTimeThreshold": {
+      "type": "integer",
+      "description": "Positive or negative threshold for estimated arrival time."
+    },
+    "estimatedDepartureTimeThreshold": {
+      "type": "integer",
+      "description": "Positive or negative threshold for estimated departure time."
+    },
+    "statusChangeFilters": {
+      "type": "object",
+      "description": "Filters for specific status changes."
+    },
+    "statusChangeFilters.baggage": {
+      "type": "boolean",
+      "description": "If value is \"false\", will ignore flight updates that only have a change in baggage."
+    },
+    "statusChangeFilters.aircraftRegistrationNumber": {
+      "type": "boolean",
+      "description": "If value is \"false\", will ignore flight updates that only have a change in aircraftRegistrationNumber."
+    },
+    "statusChangeFilters.gates": {
+      "type": "boolean",
+      "description": "If value is \"false\", will ignore flight updates that only have a change in gates."
+    },
+    "statusChangeFilters.terminal": {
+      "type": "boolean",
+      "description": "If value is \"false\", will ignore flight updates that only have a change in terminal."
+    },
+    "statusChangeFilters.seats": {
+      "type": "boolean",
+      "description": "If value is \"false\", will ignore flight updates that only have a change in seats."
+    },
+    "statusChangeFilters.aircraftType": {
+      "type": "boolean",
+      "description": "If value is \"false\", will ignore flight updates that only have a change in aircraftType."
+    }
+  },
+  "required": [
+    "alertId"
+  ]
+}

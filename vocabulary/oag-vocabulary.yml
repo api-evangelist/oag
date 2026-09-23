@@ -1,0 +1,144 @@
+generated: '2026-09-23'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/_ae-authored/oag-openapi-generated.yml
+vocabulary:
+  name: OAG Domain Vocabulary
+  description: 'Terms declared by OAG''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions. Derived,
+    not authored.'
+  version: '2026-09-23'
+  terms:
+  - term: GetAlertsResponse
+    definition: 'Object declared by the contract with fields: 200, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetAlertsResponse
+  - term: PatchAlertsRequest
+    definition: 'Object declared by the contract with fields: alertId, name, description, iataCarrierCode, icaoCarrierCode, flightNumber, fromFlight,
+      toFlight, departureAirport, arrivalAirport, alertType, active. (17 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PatchAlertsRequest
+  - term: PatchAlertsResponse
+    definition: 'Object declared by the contract with fields: 200, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PatchAlertsResponse
+  - term: PostAlertsRequest
+    definition: 'Object declared by the contract with fields: accountId, name, description, iataCarrierCode, icaoCarrierCode, flightNumber, fromFlight,
+      toFlight, departureAirport, arrivalAirport, alertType, content. (10 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PostAlertsRequest
+  - term: PostAlertsResponse
+    definition: 'Object declared by the contract with fields: 201, 400, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PostAlertsResponse
+  - term: DeleteAlertsAlertidResponse
+    definition: 'Object declared by the contract with fields: 200, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/DeleteAlertsAlertidResponse
+  - term: GetFlightConnectionsResponse
+    definition: 'Object declared by the contract with fields: 200, 400, 401, 406, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightConnectionsResponse
+  - term: GetFlightInfoAlertsAccountsAccountidAccesskeyResponse
+    definition: 'Object declared by the contract with fields: 200, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightInfoAlertsAccountsAccountidAccesskeyResponse
+  - term: PatchFlightInfoAlertsAlertsRequest
+    definition: 'Object declared by the contract with fields: alertId, name, description, iataCarrierCode, icaoCarrierCode, flightNumber, fromFlight,
+      toFlight, departureAirport, arrivalAirport, alertType, active. (17 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PatchFlightInfoAlertsAlertsRequest
+  - term: PatchFlightInfoAlertsAlertsResponse
+    definition: 'Object declared by the contract with fields: 200, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PatchFlightInfoAlertsAlertsResponse
+  - term: DeleteFlightInfoAlertsAlertsAlertidResponse
+    definition: 'Object declared by the contract with fields: 200, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/DeleteFlightInfoAlertsAlertsAlertidResponse
+  - term: GetFlightInfoAlertsAlertsAlertidResponse
+    definition: 'Object declared by the contract with fields: alertId, accountId, name, description, iataCarrierCode, icaoCarrierCode, flightNumber,
+      fromFlight, toFlight, departureAirport, arrivalAirport, alertType. (16 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightInfoAlertsAlertsAlertidResponse
+  - term: GetFlightInfoAlertsProfileAccountidResponse
+    definition: 'Object declared by the contract with fields: firstName, lastName, email, secondaryEmail, country, content, companyName.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightInfoAlertsProfileAccountidResponse
+  - term: PostFlightInfoAlertsFlightinfoalertidRequest
+    definition: 'Object declared by the contract with fields: accountId, name, description, iataCarrierCode, icaoCarrierCode, flightNumber, fromFlight,
+      toFlight, departureAirport, arrivalAirport, alertType, content. (10 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PostFlightInfoAlertsFlightinfoalertidRequest
+  - term: PostFlightInfoAlertsFlightinfoalertidResponse
+    definition: 'Object declared by the contract with fields: 201, 400, 404, 406, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PostFlightInfoAlertsFlightinfoalertidResponse
+  - term: GetFlightInstancesResponse
+    definition: 'Object declared by the contract with fields: data, paging.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightInstancesResponse
+  - term: GetFlightInstancesDeparturedateScheduleinstancekeyResponse
+    definition: 'Object declared by the contract with fields: bookingClasses, freightClasses, restrictions, planeChangeWithoutAircraftChange,
+      onTimePerformance, inFlightServices, automatedCheckIn, electronicTicketing, secureFlightIndicator, governmentApproval, statusDetails, seatingCapacity.
+      (18 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightInstancesDeparturedateScheduleinstancekeyResponse
+  - term: GetFlightsResponse
+    definition: 'Object declared by the contract with fields: 200, 400, 401, 406, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightsResponse
+  - term: GetLocationsResponse
+    definition: 'Object declared by the contract with fields: 200, 400, 401, 406, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetLocationsResponse
+  - term: PostProfileRequest
+    definition: 'Object declared by the contract with fields: firstName, lastName, email, secondaryEmail, country, content, companyName.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PostProfileRequest
+  - term: PostProfileResponse
+    definition: 'Object declared by the contract with fields: accountId, evtPrimaryConnectionString, evtSecondaryConnectionString.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PostProfileResponse
+  - term: PatchProfileAccountidRequest
+    definition: 'Object declared by the contract with fields: firstName, lastName, email, secondaryEmail, country, content, companyName.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PatchProfileAccountidRequest
+  - term: PatchProfileAccountidResponse
+    definition: 'Object declared by the contract with fields: 200, 400, 404, 406, 409, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/PatchProfileAccountidResponse
+  - term: GetStatusResponse
+    definition: 'Object declared by the contract with fields: 200, 404, 406, 409, 422, 500.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetStatusResponse
+  - term: GetDeparturedateScheduleinstancekeyResponse
+    definition: 'Object declared by the contract with fields: bookingClasses, freightClasses, restrictions, planeChangeWithoutAircraftChange,
+      onTimePerformance, inFlightServices, automatedCheckIn, electronicTicketing, secureFlightIndicator, governmentApproval, statusDetails, seatingCapacity.
+      (18 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetDeparturedateScheduleinstancekeyResponse

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/oag/main/json-schema/oag-get-departuredate-scheduleinstancekey-response-schema.json",
+  "title": "GetDeparturedateScheduleinstancekeyResponse",
+  "x-generated": "2026-09-23",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetDeparturedateScheduleinstancekeyResponse",
+  "type": "object",
+  "properties": {
+    "bookingClasses": {
+      "type": "array",
+      "description": "Information relating to the Passenger Reservations Booking Designator (PRBD) and Meals."
+    },
+    "freightClasses": {
+      "type": "array",
+      "description": "Indicates the type of cargo that can be loaded onto the equipment."
+    },
+    "restrictions": {
+      "type": "array",
+      "description": "Information provided by a carrier to specify restrictions on carrying traffic or limitations to the carriage of traffic."
+    },
+    "planeChangeWithoutAircraftChange": {
+      "type": "boolean",
+      "description": "True/False value showing if there is an equipment change enroute where the IATA Aircraft Type code is the same on each leg."
+    },
+    "onTimePerformance": {
+      "type": "object",
+      "description": "Represents on time indicator and delay and cancelation performance."
+    },
+    "inFlightServices": {
+      "type": "array",
+      "description": "Denotes the use of in-flight services in relation to the IATA standard."
+    },
+    "automatedCheckIn": {
+      "type": "boolean",
+      "description": "Identifies if the carrier offers automated check‑in for the flight leg."
+    },
+    "electronicTicketing": {
+      "type": "boolean",
+      "description": "Used to identify if a flight leg is an electronic ticketing candidate."
+    },
+    "secureFlightIndicator": {
+      "type": "boolean",
+      "description": "Present when legal requirement to disclose full Secure Flight passenger data for U.S. flights."
+    },
+    "governmentApproval": {
+      "type": "boolean",
+      "description": "Marker to show service is subject to government approval."
+    },
+    "statusDetails": {
+      "type": "array",
+      "description": "Details about flight status per leg."
+    },
+    "seatingCapacity": {
+      "type": "object",
+      "description": "Represents actual and predicted seating capacity."
+    },
+    "carrier": {
+      "type": "object",
+      "description": "Contains a carrier designator code."
+    },
+    "serviceSuffix": {
+      "type": "string",
+      "description": "The operational suffix supplied by the carrier."
+    },
+    "flightNumber": {
+      "type": "integer",
+      "description": "The numeric part of the flight number."
+    },
+    "sequenceNumber": {
+      "type": "integer",
+      "description": "Sequence of stopping points starting at 0."
+    },
+    "flightType": {
+      "type": "string",
+      "description": "Flight type definition."
+    },
+    "departure": {
+      "type": "object",
+      "description": "Departure airport, terminal, date, time, etc."
+    },
+    "arrival": {
+      "type": "object",
+      "description": "Arrival airport, terminal, date, time, etc."
+    },
+    "elapsedTime": {
+      "type": "integer",
+      "description": "The duration of the flight."
+    },
+    "cargoTonnage": {
+      "type": "number",
+      "description": "Cargo tonnage."
+    },
+    "aircraftType": {
+      "type": "object",
+      "description": "Denotes the equipment type in use."
+    },
+    "serviceType": {
+      "type": "object",
+      "description": "Single character service type classification."
+    },
+    "segmentInfo": {
+      "type": "object",
+      "description": "Number of stops and intermediate airports."
+    },
+    "distance": {
+      "type": "object",
+      "description": "Great‑circle distance information."
+    },
+    "codeshare": {
+      "type": "object",
+      "description": "Codeshare information."
+    },
+    "scheduleInstanceKey": {
+      "type": "string",
+      "description": "Unique identifier of schedule instance."
+    },
+    "statusKey": {
+      "type": "string",
+      "description": "Unique identifier of flight status."
+    },
+    "originalFlight": {
+      "type": "string",
+      "description": "Link to the original scheduled flight."
+    },
+    "map": {
+      "type": "string",
+      "description": "Link to the flight map."
+    }
+  }
+}

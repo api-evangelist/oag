@@ -1,0 +1,74 @@
+# OAG Developer Portal
+
+> OAG is the world's leading provider of aviation data and analytics. The OAG Developer Portal is a self-service platform for developers to discover, trial, and integrate OAG aviation data APIs.
+
+## Getting started
+
+- [Log in / Sign up](https://developers.oag.com/login)
+- [API Catalogue](https://developers.oag.com/apis)
+- [Integration guides](https://developers.oag.com/guides)
+- [What's New](https://developers.oag.com/whatsnew)
+- [OAG Knowledge Hub](https://knowledge.oag.com/)
+
+## APIs and trials
+
+- [Flight Info](https://developers.oag.com/apis/flight-info-v2): Access flight schedules and status per individual flight, including on-time performance indicators and diversion and recovery flight information. Enrich further with optional predicted and actual seat data, all returned in a single API call. Tags: schedules, status, real-time, seats
+- [Flight Info Alerts](https://developers.oag.com/apis/flight-info-alerts-v1): React to flight changes the moment they happen. Receive real-time notifications for schedule and status updates, including optional seat data, delivered via HTTP push or pulled from Azure Event Hubs. Tags: real-time, notifications, events, schedules, status
+- [Flight Info Alerts Trial](https://developers.oag.com/apis/flight-info-alerts-v1): Try Flight Info Alerts free for 28 days with up to 10 active alerts created. Receive real-time notifications whenever flight schedules or status change, delivered via HTTP push or pulled from Azure Event Hubs. Excludes Global Alerts. Tags: real-time, notifications, events, schedules, status
+- [Schedules](https://developers.oag.com/apis/schedules): Access flight schedules at an effective view, returning date ranges and operating days rather than individual flight instances. Enrich responses with optional seat capacity by cabin class. Tags: schedules, planning, historical
+- [Flight Info Connections](https://developers.oag.com/apis/flight-info-connections-v1): Access weekly-updated global passenger and cargo connection data, built on OAG schedules and industry-compliant Minimum Connecting Times (MCTs). Tags: connections, MCT, cargo
+- [Master Data](https://developers.oag.com/apis/locations-v1): Access reference data for carriers, locations, and equipment across IATA, ICAO, and FAA standards. Includes carrier names and alliance membership, airport codes and time zones, aircraft types, and more. Tags: airports, airlines, cities, time zones, coordinates
+
+## Flight Info API documentation
+
+- [Getting started](https://knowledge.oag.com/docs/flight-info-api-getting-started.md)
+- [Creating an account](https://knowledge.oag.com/docs/flight-info-api-creating-an-account.md)
+- [Requesting a trial](https://knowledge.oag.com/docs/flight-info-api-requesting-a-trial.md)
+- [Requesting a subscription](https://knowledge.oag.com/docs/flight-info-api-requesting-a-subscription.md)
+- [Response layout descriptions](https://knowledge.oag.com/docs/flight-info-api-response-layout-descriptions.md)
+- [Content parameters](https://knowledge.oag.com/docs/flight-info-api-content-parameters.md)
+- [Access levels](https://knowledge.oag.com/docs/what-are-the-different-access-levels-for-the-api.md)
+- [Billing and charges](https://knowledge.oag.com/docs/how-am-i-charged-for-using-flight-info-api.md)
+- [Trial duration and data limits](https://knowledge.oag.com/docs/how-long-does-the-free-trial-last-and-how-much-data-can-i-return.md)
+- [Data update frequency](https://knowledge.oag.com/docs/how-frequently-is-the-data-updated-in-the-api.md)
+- [Migrating from FvXML](https://knowledge.oag.com/docs/flight-info-api-migration-fvxml.md)
+- [Migrating from v1 to v2](https://knowledge.oag.com/docs/switching-from-flight-info-api-v1-to-v2-a-step-by-step-guide.md)
+
+## Flight Info Connections API documentation
+
+- [Response layout descriptions](https://knowledge.oag.com/docs/flight-info-connections-api-response-layout-descriptions-1.md)
+- [How to trial the Connections API](https://knowledge.oag.com/docs/how-can-i-trial-the-flight-info-connections-api.md)
+
+## Flight Info Alerts documentation
+
+- [Overview](https://knowledge.oag.com/docs/flight-info-alerts-overview.md)
+- [Developer Portal setup](https://knowledge.oag.com/docs/flight-info-alerts-developer-portal.md)
+- [Complete your profile](https://knowledge.oag.com/docs/flight-info-alerts-complete-profile.md)
+- [Create an alert](https://knowledge.oag.com/docs/flight-info-alerts-create-alert.md)
+- [Connect to Event Hub](https://knowledge.oag.com/docs/flight-info-alerts-connect-to-event-hub.md)
+- [HTTP Push (beta)](https://knowledge.oag.com/docs/flight-info-alerts-http-pushbeta.md)
+- [Change indicators](https://knowledge.oag.com/docs/flight-info-alerts-change-indicators.md)
+- [Schedule event field definitions](https://knowledge.oag.com/docs/flight-info-alerts-event-samples-schedules-field-definitions.md)
+- [Status event field definitions](https://knowledge.oag.com/docs/flight-info-alerts-event-samples-status-field-definitions.md)
+- [How Flight Info Alerts works](https://knowledge.oag.com/docs/how-does-flight-info-alerts-work.md)
+- [What is an Event Hub](https://knowledge.oag.com/docs/what-is-an-event-hub.md)
+- [Billing and charges](https://knowledge.oag.com/docs/how-am-i-charged-for-flight-info-alerts.md)
+- [Migrating from FvDynamic](https://knowledge.oag.com/docs/flight-info-alerts-migration-fv-dynamic.md)
+- [Migrating from FnB](https://knowledge.oag.com/docs/flight-info-alerts-migration-fnb.md)
+- [Migrating from FvBatch](https://knowledge.oag.com/docs/flight-info-alerts-migration-fv-batch.md)
+
+## Schedules API documentation
+
+- [Response layout descriptions](https://knowledge.oag.com/docs/schedules-api-response-layout-descriptions.md)
+
+## Master Data API documentation
+
+- [Response layout descriptions](https://knowledge.oag.com/docs/master-data-api-response-layout-descriptions.md)
+- [API samples](https://knowledge.oag.com/docs/master-data-api-samples.md)
+- [Equipment data fields explained](https://knowledge.oag.com/docs/master-data-equipment-data-fields-explained.md)
+- [Locations data fields explained](https://knowledge.oag.com/docs/master-data-locations-data-fields-explained.md)
+- [Carriers data fields explained](https://knowledge.oag.com/docs/master-data-carriers-data-fields-explained.md)
+
+## Authentication
+
+OAG APIs use API key authentication. Keys are managed from the developer dashboard after sign-up.

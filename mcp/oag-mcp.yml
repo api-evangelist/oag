@@ -1,0 +1,109 @@
+generated: '2026-09-23'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/_ae-authored/oag-openapi-generated.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: No MCP server was found. The pre-flight posted tools/list to /mcp on api.oag.com, oag.com, app.oag.com, ar.oag.com; verdict absent. Candidate
+  tools below are derived from the 19 operation(s) in the provider's own OpenAPI (19 listed); they describe what a server WOULD expose, not one
+  that exists.
+tools:
+- name: get_alerts
+  operationId: get_alerts
+  method: GET
+  path: /alerts
+  description: Get Alerts
+- name: patch_alerts
+  operationId: patch_alerts
+  method: PATCH
+  path: /alerts
+  description: Update Alert
+- name: post_alerts
+  operationId: post_alerts
+  method: POST
+  path: /alerts
+  description: Create Alert
+- name: delete_alerts_alertid
+  operationId: delete_alerts_alertid
+  method: DELETE
+  path: /alerts/{alertid}
+  description: Delete an Alert on a Client Account.
+- name: get_flight_connections
+  operationId: get_flight_connections
+  method: GET
+  path: /flight-connections
+  description: GET Connections
+- name: get_flight_info_alerts_accounts_accountid_access_key
+  operationId: get_flight_info_alerts_accounts_accountid_accessKey
+  method: GET
+  path: /flight-info-alerts/accounts/{accountid}/accessKey
+  description: Retrieves the eventhub security access key by the provided account id.
+- name: patch_flight_info_alerts_alerts
+  operationId: patch_flight_info_alerts_alerts
+  method: PATCH
+  path: /flight-info-alerts/alerts
+  description: Update Alert
+- name: delete_flight_info_alerts_alerts_alertid
+  operationId: delete_flight_info_alerts_alerts_alertid
+  method: DELETE
+  path: /flight-info-alerts/alerts/{alertid}
+  description: Delete an Alert on a Client Account.
+- name: get_flight_info_alerts_alerts_alertid
+  operationId: get_flight_info_alerts_alerts_alertid
+  method: GET
+  path: /flight-info-alerts/alerts/{alertid}
+  description: Retrieve a specific alert by the provided alert id.
+- name: get_flight_info_alerts_profile_accountid
+  operationId: get_flight_info_alerts_profile_accountid
+  method: GET
+  path: /flight-info-alerts/profile/{accountid}
+  description: Get Account Profile
+- name: post_flight_info_alerts_flightinfoalertid
+  operationId: post_flight_info_alerts_flightinfoalertid
+  method: POST
+  path: /flight-info-alerts/{flightinfoalertid}
+  description: Create Alert
+- name: get_flight_instances
+  operationId: get_flight_instances
+  method: GET
+  path: /flight-instances
+  description: Direct Flights Returns a paginated list of flight instances matching the supplied filter parameters.
+- name: get_flight_instances_departuredate_scheduleinstancekey
+  operationId: get_flight_instances_departuredate_scheduleinstancekey
+  method: GET
+  path: /flight-instances/{departuredate}/{scheduleinstancekey}
+  description: Returns a single flight instance identified by its departure date and schedule instance key.
+- name: get_flights
+  operationId: get_flights
+  method: GET
+  path: /flights
+  description: Schedules by IATA carrier code
+- name: get_locations
+  operationId: get_locations
+  method: GET
+  path: /locations
+  description: Locations
+- name: post_profile
+  operationId: post_profile
+  method: POST
+  path: /profile
+  description: Complete Profile
+- name: patch_profile_accountid
+  operationId: patch_profile_accountid
+  method: PATCH
+  path: /profile/{accountid}
+  description: Update Profile
+- name: get_status
+  operationId: get_status
+  method: GET
+  path: /status
+  description: Returns the current status of the Flight Info Alerts service.
+- name: get_departuredate_scheduleinstancekey
+  operationId: get_departuredate_scheduleinstancekey
+  method: GET
+  path: /{departuredate}/{scheduleinstancekey}
+  description: Returns a single flight instance identified by its departure date and schedule instance key.

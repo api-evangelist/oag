@@ -1,0 +1,1805 @@
+openapi: 3.1.0
+info:
+  title: OAG API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 20 operation(s) read from 23 public documentation page(s) (each
+    operation names its page in x-source). This is not the provider''s published contract; OAG has published no machine-readable contract that
+    the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 20
+    pages-with-code: 1
+    pages-read: 23
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://developers.oag.com/apis/schedules
+  - https://developers.oag.com/apis/locations-v1
+  - https://developers.oag.com/apis/flight-info-v2
+  - https://developers.oag.com/apis/flight-info-alerts-v1
+  - https://developers.oag.com/apis/flight-info-v2/GetFlight
+  - https://developers.oag.com/apis/flight-info-v2/GetFlights
+  - https://developers.oag.com/apis/locations-v1/GetLocations
+  - https://developers.oag.com/apis/flight-info-connections-v1
+  - https://developers.oag.com/apis/flight-info-alerts-v1/status
+  - https://developers.oag.com/apis/schedules/GetActiveSchedules
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlerts
+  - https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+  - https://developers.oag.com/apis/schedules/schedules-iata-carriers
+  - https://developers.oag.com/apis/schedules/schedules-icao-carriers
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccessKey
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateProfile
+  - https://developers.oag.com/apis/flight-info-alerts-v1/completeProfile
+  - https://developers.oag.com/apis/flight-info-connections-v1/Connections
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccountProfile
+  - https://developers.oag.com
+servers:
+- url: https://api.oag.com
+paths:
+  /alerts:
+    get:
+      operationId: get_alerts
+      tags:
+      - Alerts
+      summary: Get Alerts
+      description: Retrieves the list of alert configurations in the customer profile by the provided account id.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/getAlerts
+      parameters:
+      - name: accountId
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, e.g., v1
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAlertsResponse'
+      x-evidence:
+        kind: documentation
+    patch:
+      operationId: patch_alerts
+      tags:
+      - Alerts
+      summary: Update Alert
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchAlertsRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchAlertsResponse'
+      x-evidence:
+        kind: documentation
+    post:
+      operationId: post_alerts
+      tags:
+      - Alerts
+      summary: Create Alert
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostAlertsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostAlertsResponse'
+      x-evidence:
+        kind: documentation
+  /alerts/{alertid}:
+    delete:
+      operationId: delete_alerts_alertid
+      tags:
+      - Alerts
+      summary: Delete an Alert on a Client Account.
+      description: Delete an Alert on a Client Account.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+      parameters:
+      - name: alertid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAlertsAlertidResponse'
+      x-evidence:
+        kind: documentation
+  /flight-connections:
+    get:
+      operationId: get_flight_connections
+      tags:
+      - Flight Connections
+      summary: GET Connections
+      description: Retrieves weekly updated global single passenger and cargo connections based on query parameters.
+      x-source: https://developers.oag.com/apis/flight-info-connections-v1
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+        description: API version, e.g., v1
+      - name: DepartureDate
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date or date range in ISO 8601 date format (e.g., YYYY-MM-DD or YYYY-MM-DD/YYYY-MM-DD). The maximum date range
+          is 7 days.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing departure airport.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing arrival airport.
+      - name: DepartureCity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The departure city code as designated by IATA.
+      - name: ArrivalCity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The arrival city code as designated by IATA.
+      - name: Circuity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: A maximum value for the circuity.
+      - name: ConnectionType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, only certain connection types are returned (o = online, i = interline, n = offline).
+      - name: Leg1CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two-character code of the leg 1 assigned by IATA. Accepts comma separated values.
+      - name: Leg2CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two-character code of the leg 2 assigned by IATA. Accepts comma separated values.
+      - name: MinConnectingTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Minimum Leg 1 connection time in minutes.
+      - name: MaxConnectingTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum Leg 1 connection time in minutes.
+      - name: InterAirport
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: If false, connections where Leg 1 Arrival Airport equals Leg 2 Arrival Airport are returned.
+      - name: ViaPoint
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing connecting airport(s). Accepts comma separated values.
+      - name: TotalMaxElapsedTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum total elapsed time for a connection in minutes.
+      - name: Service
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified (p = passenger, c = cargo), only connections matching service type are returned.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return (1‑1000).
+      - name: Cursor
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A cursor string marking a specific item in a list of data.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightConnectionsResponse'
+      x-evidence:
+        kind: documentation
+  /flight-info-alerts/accounts/{accountid}/accessKey:
+    get:
+      operationId: get_flight_info_alerts_accounts_accountid_accessKey
+      tags:
+      - Flight Info Alerts
+      summary: Retrieves the eventhub security access key by the provided account id.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/getAccessKey
+      parameters:
+      - name: accountid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightInfoAlertsAccountsAccountidAccesskeyResponse'
+      x-evidence:
+        kind: documentation
+  /flight-info-alerts/alerts:
+    patch:
+      operationId: patch_flight_info_alerts_alerts
+      tags:
+      - Flight Info Alerts
+      summary: Update Alert
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+      parameters:
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, e.g., v1.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchFlightInfoAlertsAlertsRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchFlightInfoAlertsAlertsResponse'
+      x-evidence:
+        kind: documentation
+  /flight-info-alerts/alerts/{alertid}:
+    delete:
+      operationId: delete_flight_info_alerts_alerts_alertid
+      tags:
+      - Flight Info Alerts
+      summary: Delete an Alert on a Client Account.
+      description: Delete an Alert on a Client Account.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+      parameters:
+      - name: alertid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteFlightInfoAlertsAlertsAlertidResponse'
+      x-evidence:
+        kind: documentation
+    get:
+      operationId: get_flight_info_alerts_alerts_alertid
+      tags:
+      - Flight Info Alerts
+      summary: Retrieve a specific alert by the provided alert id.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/getAlert
+      parameters:
+      - name: alertid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightInfoAlertsAlertsAlertidResponse'
+      x-evidence:
+        kind: documentation
+  /flight-info-alerts/profile/{accountid}:
+    get:
+      operationId: get_flight_info_alerts_profile_accountid
+      tags:
+      - Flight Info Alerts
+      summary: Get Account Profile
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/getAccountProfile
+      parameters:
+      - name: accountid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightInfoAlertsProfileAccountidResponse'
+      x-evidence:
+        kind: documentation
+  /flight-info-alerts/{flightinfoalertid}:
+    post:
+      operationId: post_flight_info_alerts_flightinfoalertid
+      tags:
+      - Flight Info Alerts
+      summary: Create Alert
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+      parameters:
+      - name: flightinfoalertid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, e.g., v1.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostFlightInfoAlertsFlightinfoalertidRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostFlightInfoAlertsFlightinfoalertidResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 2 example path(s) differing only at flightinfoalertId
+  /flight-instances:
+    get:
+      operationId: get_flight_instances
+      tags:
+      - Flight Instances
+      summary: Direct Flights Returns a paginated list of flight instances matching the supplied filter parameters.
+      x-source: https://developers.oag.com/apis/flight-info-v2/GetFlights
+      parameters:
+      - name: DepartureDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date and/or time or date and/or time range is local time in ISO 8601 date format (e.g. YYYY-MM-DD[THH:MM] or YYYY-MM-DD[THH:MM]/YYYY-MM-DD[THH:MM]).
+          The maximum date range is 31 days.
+      - name: ArrivalDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Arrival date and/or time or date and/or time range is local time in ISO 8601 date format (e.g. YYYY-MM-DD[THH:MM] or YYYY-MM-DD[THH:MM]/YYYY-MM-DD[THH:MM]).
+          The maximum date range is 31 days.
+      - name: CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Carrier (airline) code assigned either by IATA or ICAO. Accepts comma separated values.
+      - name: FlightNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: A numeric part (up to four digits) of a flight designator.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code assigned by the IATA/ICAO/FAA to an airport location representing departure airport. Accepts comma separated values.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code assigned by the IATA/ICAO/FAA to an airport location representing arrival airport. Accepts comma separated values.
+      - name: DepartureCountryCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure Country code. Only flights with the specified departure country code are returned. In ISO 3166-1 alpha-2 format.
+      - name: ArrivalCountryCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Arrival Country code. Only flights with the specified arrival country code are returned. In ISO 3166-1 alpha-2 format.
+      - name: AircraftRegistrationNumber
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Aircraft registration number (Tail Number).
+      - name: Content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, additional data is included in the API response. Accepts comma separated values.
+      - name: FlightType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Type of flight: Scheduled, Unscheduled, General Aviation (GA). Accepts comma separated values.'
+      - name: CodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Code type for Carriers and Airports. Code type values are IATA, ICAO - for carriers and airports, FAA - for airports. Accepts
+          comma separated values.
+      - name: ServiceType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Type of service. Accepts either high-level group names (Passenger, Cargo), individual IATA service type codes or 'undefined'.
+      - name: Codeshare
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Codeshare. Operating, Marketing. Only flights for the specified codeshare are returned if specified. Accepts comma separated
+          values.
+      - name: IncludeDiverted
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: When set to true, includes flights that were diverted to the specified Arrival Airport.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return. Value should be between 1 and 1000.
+      - name: After
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A cursor after refers to a random string of characters which marks a specific item in a list of data.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightInstancesResponse'
+      x-evidence:
+        kind: documentation
+  /flight-instances/:
+    get:
+      operationId: get_flight_instances
+      tags:
+      - Flight Instances
+      summary: Get flight instances based on departure and arrival criteria.
+      description: Fetches flight schedule data using the provided query parameters.
+      x-source: https://developers.oag.com
+      parameters:
+      - name: DepartureDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date and time.
+      - name: ArrivalDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Arrival date and time.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: IATA or ICAO code of the departure airport.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: IATA or ICAO code of the arrival airport.
+      - name: CodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Comma‑separated list of code types (e.g., IATA,ICAO).
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, e.g., v2.
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /flight-instances/{departuredate}/{scheduleinstancekey}:
+    get:
+      operationId: get_flight_instances_departuredate_scheduleinstancekey
+      tags:
+      - Flight Instances
+      summary: Returns a single flight instance identified by its departure date and schedule instance key.
+      x-source: https://developers.oag.com/apis/flight-info-v2/GetFlight
+      parameters:
+      - name: departuredate
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scheduleinstancekey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, default v2.
+      - name: Subscription-Key
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Valid API key.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightInstancesDeparturedateScheduleinstancekeyResponse'
+      x-evidence:
+        kind: documentation
+  /flights:
+    get:
+      operationId: get_flights
+      tags:
+      - Flights
+      summary: Schedules by IATA carrier code
+      description: Retrieve list of direct flight schedules by provided IATA carrier code and other parameters. All requests require a valid API
+        key passed as Subscription-Key in the request header.
+      x-source: https://developers.oag.com/apis/schedules
+      parameters:
+      - name: IataCarrierCode
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A two-character code assigned by the IATA to international airlines.
+      - name: FlightNumber
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A numeric part (up to four digits) of a flight designator.
+      - name: DepartureDate
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Departure date or date range is local date in ISO 8601 date format (e.g. YYYY-MM-DD or YYYY-MM-DD/YYYY-MM-DD).
+      - name: Content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, additional data is included in the API response in the Premium Content group.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return. If specified, the value should be between 1 and 1000.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightsResponse'
+      x-evidence:
+        kind: documentation
+  /locations:
+    get:
+      operationId: get_locations
+      tags:
+      - Locations
+      summary: Locations
+      description: Master Data Locations API enables customers to access industry standard IATA, ICAO and FAA airport codes and related descriptive
+        information.
+      x-source: https://developers.oag.com/apis/locations-v1
+      parameters:
+      - name: AirportCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code assigned by the IATA/ICAO/FAA to an airport. Accepts comma separated values.
+      - name: CodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Code type for Airports. Code type values are IATA, ICAO and FAA. Accepts comma separated values.
+      - name: CountryCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two letter ISO code of a country where an airport is located in. Accepts comma separated values.
+      - name: CityCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code of a city where an airport is located in. Accepts comma separated values.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to return. If specified, the value should be between 1 and 1000.
+      - name: After
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A cursor after refers to a random string of characters which marks a specific item in a list of data.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLocationsResponse'
+      x-evidence:
+        kind: documentation
+  /profile:
+    post:
+      operationId: post_profile
+      tags:
+      - Profile
+      summary: Complete Profile
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/completeProfile
+      parameters:
+      - name: Subscription-Key
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Valid API key passed as Subscription-Key in the request header.
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostProfileRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostProfileResponse'
+      x-evidence:
+        kind: documentation
+  /profile/{accountid}:
+    patch:
+      operationId: patch_profile_accountid
+      tags:
+      - Profile
+      summary: Update Profile
+      description: Update the customer profile along with the provided Subscription key and mandatory parameters.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/updateProfile
+      parameters:
+      - name: accountid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchProfileAccountidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchProfileAccountidResponse'
+      x-evidence:
+        kind: documentation
+  /status:
+    get:
+      operationId: get_status
+      tags:
+      - Status
+      summary: Returns the current status of the Flight Info Alerts service.
+      description: Returns the current status of the Flight Info Alerts service.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/status
+      parameters:
+      - name: Subscription-Key
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Valid API key
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+        description: API version, e.g., v1
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetStatusResponse'
+      x-evidence:
+        kind: documentation
+  /{departuredate}/{scheduleinstancekey}:
+    get:
+      operationId: get_departuredate_scheduleinstancekey
+      tags:
+      - Api
+      summary: Returns a single flight instance identified by its departure date and schedule instance key.
+      x-source: https://developers.oag.com/apis/flight-info-v2/GetFlight
+      parameters:
+      - name: departuredate
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scheduleinstancekey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, default v2.
+      - name: Subscription-Key
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Valid API key.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDeparturedateScheduleinstancekeyResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetAlertsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK – list of alert configurations returned as an array of objects with the fields defined in AlertParameter.
+        '404':
+          type: string
+          description: Not Found – error object with timestamp, status, message, detail, subErrors.
+        '406':
+          type: string
+          description: Not Acceptable – error object with timestamp, status, message, detail, subErrors.
+        '422':
+          type: string
+          description: Unprocessable Entity – error object with timestamp, status, message, detail, subErrors.
+        '500':
+          type: string
+          description: Internal Server Error – error object with timestamp, status, message, detail, subErrors.
+    PatchAlertsRequest:
+      type: object
+      properties:
+        alertId:
+          type: string
+          description: Alphanumeric characters generated on the creation of the alert.
+        name:
+          type: string
+          description: Some text assigning a name to the alert.
+        description:
+          type: string
+          description: Some text describing the purpose of the alert.
+        iataCarrierCode:
+          type: string
+          description: A two-character code assigned by the IATA to international airlines. Optional unless updating an alert to alertType "Carrier",
+            in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        icaoCarrierCode:
+          type: string
+          description: A three-character code assigned by the ICAO to international airlines. Optional unless updating an alert to alertType "Carrier",
+            in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        flightNumber:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        fromFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        toFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        departureAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the departure airport. Optional unless updating
+            an alert to alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        arrivalAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the arrival airport. Optional unless creating
+            an alert to alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        alertType:
+          type: string
+          description: The type of alert being configured. Accepted values are "Global", "Carrier" or "Port".
+        active:
+          type: boolean
+          description: A true/false value to enable/disable the alert.
+        content:
+          type: string
+          description: If the string "seats, changeindicator" is specified, seat and change indicator data will be included in the alert output.
+        departureDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight departures.
+        arrivalDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight arrivals.
+        schedules:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of schedules flight updates in the event feed.
+        status:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of status flight updates in the event feed.
+        gaFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of GA flight updates in the event feed.
+        unscheduledFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of unscheduled flight updates in the event feed.
+        codeshare:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of marketing flight updates in the event feed. Defaults to true.
+        estimatedArrivalTimeThreshold:
+          type: integer
+          description: Positive or negative threshold for estimated arrival time.
+        estimatedDepartureTimeThreshold:
+          type: integer
+          description: Positive or negative threshold for estimated departure time.
+        statusChangeFilters:
+          type: object
+          description: Filters for specific status changes.
+        statusChangeFilters.baggage:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in baggage.
+        statusChangeFilters.aircraftRegistrationNumber:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in aircraftRegistrationNumber.
+        statusChangeFilters.gates:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in gates.
+        statusChangeFilters.terminal:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in terminal.
+        statusChangeFilters.seats:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in seats.
+        statusChangeFilters.aircraftType:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in aircraftType.
+      required:
+      - alertId
+    PatchAlertsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK – successful update of alert configuration.
+        '404':
+          type: string
+          description: Not Found – alert does not exist.
+        '406':
+          type: string
+          description: Not Acceptable – request format not acceptable.
+        '422':
+          type: string
+          description: Unprocessable Entity – validation errors.
+        '500':
+          type: string
+          description: Internal Server Error – unexpected server error.
+    PostAlertsRequest:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Alphanumeric characters generated on the creation of the customer profile.
+        name:
+          type: string
+          description: Some text assigning a name to the alert.
+        description:
+          type: string
+          description: Some text describing the purpose of the alert.
+        iataCarrierCode:
+          type: string
+          description: A two-character code assigned by the IATA to international airlines. Optional unless creating an alert with alertType "Carrier",
+            in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        icaoCarrierCode:
+          type: string
+          description: A three-character code assigned by the ICAO to international airlines. Optional unless creating an alert with alertType
+            "Carrier", in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        flightNumber:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        fromFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        toFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        departureAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the departure airport. Optional unless creating
+            an alert with alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        arrivalAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the arrival airport. Optional unless creating
+            an alert with alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        alertType:
+          type: string
+          description: The type of alert being configured. Accepted values are "Global", "Carrier" or "Port".
+        content:
+          type: string
+          description: If the string "seats, changeindicator" is specified, seat and change indicator data will be included in the alert output.
+        departureDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight departures.
+        arrivalDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight arrivals.
+        schedules:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of schedules flight updates in the event feed. Defaults to true if you
+            are allowed to use schedules alerts.
+        status:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of status flight updates in the event feed. Defaults to true if you
+            are allowed to use status alerts.
+        gaFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of GA flight updates in the event feed. Defaults to false.
+        unscheduledFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of unscheduled flight updates in the event feed. Defaults to false.
+        codeshare:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of marketing flight updates in the event feed. Defaults to true.
+        estimatedArrivalTimeThreshold:
+          type: integer
+          description: An integer value +- 1440 minutes. When set a filter match threshold is set to match flights arriving before or after the
+            set threshold. A negative threshold will match flights arriving at or before the ETA time and positive integer will match flights
+            arriving at or after the ETA time. Change Indicator filters take a higher priority to this filter.
+        estimatedDepartureTimeThreshold:
+          type: integer
+          description: An integer value +- 1440 minutes. When set a filter match threshold is set to match flights departing before or after the
+            set threshold. A negative threshold will matchcd flights departing at or before the ETD time and positive integer will match flights
+            departing at or after the ETD time. Change Indicator filters take a higher priority to this filter.
+        statusChangeFilters:
+          type: object
+          description: Object containing boolean flags for specific change filters.
+      required:
+      - accountId
+      - alertType
+    PostAlertsResponse:
+      type: object
+      properties:
+        '201':
+          type: string
+          description: Created – successful creation of alert.
+        '400':
+          type: string
+          description: Bad Request – validation errors.
+        '404':
+          type: string
+          description: Not Found – resource not found.
+        '406':
+          type: string
+          description: Not Acceptable – request not acceptable.
+        '422':
+          type: string
+          description: Unprocessable Entity – semantic errors.
+        '500':
+          type: string
+          description: Internal Server Error – server side failure.
+    DeleteAlertsAlertidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK
+        '404':
+          type: string
+          description: Not Found
+        '406':
+          type: string
+          description: Not Acceptable
+        '422':
+          type: string
+          description: Unprocessable Entity
+        '500':
+          type: string
+          description: Internal Server Error
+    GetFlightConnectionsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with connections array and paging info.
+        '400':
+          type: string
+          description: Bad Request – error details include type, title, status, traceId, errors.
+        '401':
+          type: string
+          description: Unauthorized – error details include statusCode and message.
+        '406':
+          type: string
+          description: Not Acceptable – server cannot produce an acceptable response.
+        '500':
+          type: string
+          description: Internal Server Error – generic server error.
+    GetFlightInfoAlertsAccountsAccountidAccesskeyResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK – successful response with access key details.
+        '404':
+          type: string
+          description: Not Found – error details.
+        '406':
+          type: string
+          description: Not Acceptable – error details.
+        '422':
+          type: string
+          description: Unprocessable Entity – error details.
+        '500':
+          type: string
+          description: Internal Server Error – error details.
+    PatchFlightInfoAlertsAlertsRequest:
+      type: object
+      properties:
+        alertId:
+          type: string
+          description: Alphanumeric characters generated on the creation of the alert.
+        name:
+          type: string
+          description: Some text assigning a name to the alert.
+        description:
+          type: string
+          description: Some text describing the purpose of the alert.
+        iataCarrierCode:
+          type: string
+          description: A two-character code assigned by the IATA to international airlines. Optional unless updating an alert to alertType "Carrier",
+            in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        icaoCarrierCode:
+          type: string
+          description: A three-character code assigned by the ICAO to international airlines. Optional unless updating an alert to alertType "Carrier",
+            in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        flightNumber:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        fromFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        toFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        departureAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the departure airport. Optional unless updating
+            an alert to alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        arrivalAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the arrival airport. Optional unless creating
+            an alert to alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        alertType:
+          type: string
+          description: The type of alert being configured. Accepted values are "Global", "Carrier" or "Port".
+        active:
+          type: boolean
+          description: A true/false value to enable/disable the alert.
+        content:
+          type: string
+          description: If the string "seats, changeindicator" is specified, seat and change indicator data will be included in the alert output.
+        departureDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight departures.
+        arrivalDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight arrivals.
+        schedules:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of schedules flight updates in the event feed.
+        status:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of status flight updates in the event feed.
+        gaFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of GA flight updates in the event feed.
+        unscheduledFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of unscheduled flight updates in the event feed.
+        codeshare:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of marketing flight updates in the event feed. Defaults to true.
+        estimatedArrivalTimeThreshold:
+          type: integer
+          description: Positive or negative threshold for estimated arrival time.
+        estimatedDepartureTimeThreshold:
+          type: integer
+          description: Positive or negative threshold for estimated departure time.
+        statusChangeFilters:
+          type: object
+          description: Filters for specific status changes.
+        statusChangeFilters.baggage:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in baggage.
+        statusChangeFilters.aircraftRegistrationNumber:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in aircraftRegistrationNumber.
+        statusChangeFilters.gates:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in gates.
+        statusChangeFilters.terminal:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in terminal.
+        statusChangeFilters.seats:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in seats.
+        statusChangeFilters.aircraftType:
+          type: boolean
+          description: If value is "false", will ignore flight updates that only have a change in aircraftType.
+      required:
+      - alertId
+    PatchFlightInfoAlertsAlertsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK – successful update of alert configuration.
+        '404':
+          type: string
+          description: Not Found – alert does not exist.
+        '406':
+          type: string
+          description: Not Acceptable – request format not acceptable.
+        '422':
+          type: string
+          description: Unprocessable Entity – validation errors.
+        '500':
+          type: string
+          description: Internal Server Error – unexpected server error.
+    DeleteFlightInfoAlertsAlertsAlertidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK
+        '404':
+          type: string
+          description: Not Found
+        '406':
+          type: string
+          description: Not Acceptable
+        '422':
+          type: string
+          description: Unprocessable Entity
+        '500':
+          type: string
+          description: Internal Server Error
+    GetFlightInfoAlertsAlertsAlertidResponse:
+      type: object
+      properties:
+        alertId:
+          type: string
+        accountId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        iataCarrierCode:
+          type: string
+        icaoCarrierCode:
+          type: string
+        flightNumber:
+          type: integer
+        fromFlight:
+          type: integer
+        toFlight:
+          type: integer
+        departureAirport:
+          type: string
+        arrivalAirport:
+          type: string
+        alertType:
+          type: string
+        active:
+          type: boolean
+        content:
+          type: string
+        departureDate:
+          type: string
+        arrivalDate:
+          type: string
+        createdTimestamp:
+          type: string
+        lastUpdatedTimestamp:
+          type: string
+        deleted:
+          type: boolean
+        schedules:
+          type: boolean
+        status:
+          type: boolean
+        gaFlights:
+          type: boolean
+        unscheduledFlights:
+          type: boolean
+        codeshare:
+          type: boolean
+        estimatedArrivalTimeThreshold:
+          type: integer
+        estimatedDepartureTimeThreshold:
+          type: integer
+        changeIndicator:
+          type: boolean
+        statusChangeFilters:
+          type: object
+    GetFlightInfoAlertsProfileAccountidResponse:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Customer’s first name
+        lastName:
+          type: string
+          description: Customer’s surname
+        email:
+          type: string
+          description: Customer’s email address
+        secondaryEmail:
+          type: string
+          description: Customer’s alternative email address
+        country:
+          type: string
+          description: A two-character ISO country code designated to the customer’s country of location
+        content:
+          type: string
+          description: If specified, additional data is included in the API response in the Premium Content group
+        companyName:
+          type: string
+          description: Customer’s company name
+    PostFlightInfoAlertsFlightinfoalertidRequest:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Alphanumeric characters generated on the creation of the customer profile.
+        name:
+          type: string
+          description: Some text assigning a name to the alert.
+        description:
+          type: string
+          description: Some text describing the purpose of the alert.
+        iataCarrierCode:
+          type: string
+          description: A two-character code assigned by the IATA to international airlines. Optional unless creating an alert with alertType "Carrier",
+            in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        icaoCarrierCode:
+          type: string
+          description: A three-character code assigned by the ICAO to international airlines. Optional unless creating an alert with alertType
+            "Carrier", in which case iataCarrierCode and/or icaoCarrierCode must be supplied.
+        flightNumber:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        fromFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        toFlight:
+          type: integer
+          description: A numeric part (up to four digits) of a flight designator.
+        departureAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the departure airport. Optional unless creating
+            an alert with alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        arrivalAirport:
+          type: string
+          description: A Three-letter code assigned by the IATA to an airport location representing the arrival airport. Optional unless creating
+            an alert with alertType "Port", in which case departureAirport and/or arrivalAirport must be supplied.
+        alertType:
+          type: string
+          description: The type of alert being configured. Accepted values are "Global", "Carrier" or "Port".
+        content:
+          type: string
+          description: If the string "seats, changeindicator" is specified, seat and change indicator data will be included in the alert output.
+        departureDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight departures.
+        arrivalDate:
+          type: string
+          description: A date in the format yyyy-MM-dd for flight arrivals.
+        schedules:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of schedules flight updates in the event feed. Defaults to true if you
+            are allowed to use schedules alerts.
+        status:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of status flight updates in the event feed. Defaults to true if you
+            are allowed to use status alerts.
+        gaFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of GA flight updates in the event feed. Defaults to false.
+        unscheduledFlights:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of unscheduled flight updates in the event feed. Defaults to false.
+        codeshare:
+          type: boolean
+          description: A true/false value to enable/disable the inclusion of marketing flight updates in the event feed. Defaults to true.
+        estimatedArrivalTimeThreshold:
+          type: integer
+          description: An integer value +- 1440 minutes. When set a filter match threshold is set to match flights arriving before or after the
+            set threshold. A negative threshold will match flights arriving at or before the ETA time and positive integer will match flights
+            arriving at or after the ETA time. Change Indicator filters take a higher priority to this filter.
+        estimatedDepartureTimeThreshold:
+          type: integer
+          description: An integer value +- 1440 minutes. When set a filter match threshold is set to match flights departing before or after the
+            set threshold. A negative threshold will matchcd flights departing at or before the ETD time and positive integer will match flights
+            departing at or after the ETD time. Change Indicator filters take a higher priority to this filter.
+        statusChangeFilters:
+          type: object
+          description: Object containing boolean flags for specific change filters.
+      required:
+      - accountId
+      - alertType
+    PostFlightInfoAlertsFlightinfoalertidResponse:
+      type: object
+      properties:
+        '201':
+          type: string
+          description: Created – successful creation of alert.
+        '400':
+          type: string
+          description: Bad Request – validation errors.
+        '404':
+          type: string
+          description: Not Found – resource not found.
+        '406':
+          type: string
+          description: Not Acceptable – request not acceptable.
+        '422':
+          type: string
+          description: Unprocessable Entity – semantic errors.
+        '500':
+          type: string
+          description: Internal Server Error – server side failure.
+    GetFlightInstancesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Array of flight objects.
+        paging:
+          type: object
+          description: Provides details about the API call (limit, totalCount, totalPages, next).
+    GetFlightInstancesDeparturedateScheduleinstancekeyResponse:
+      type: object
+      properties:
+        bookingClasses:
+          type: array
+        freightClasses:
+          type: array
+        restrictions:
+          type: array
+        planeChangeWithoutAircraftChange:
+          type: boolean
+        onTimePerformance:
+          type: object
+        inFlightServices:
+          type: array
+        automatedCheckIn:
+          type: boolean
+        electronicTicketing:
+          type: boolean
+        secureFlightIndicator:
+          type: boolean
+        governmentApproval:
+          type: boolean
+        statusDetails:
+          type: array
+        seatingCapacity:
+          type: object
+        carrier:
+          type: object
+        serviceSuffix:
+          type: string
+        flightNumber:
+          type: integer
+        sequenceNumber:
+          type: integer
+        flightType:
+          type: string
+        departure:
+          type: object
+        arrival:
+          type: object
+        elapsedTime:
+          type: integer
+        cargoTonnage:
+          type: number
+        aircraftType:
+          type: object
+        serviceType:
+          type: object
+        segmentInfo:
+          type: object
+        distance:
+          type: object
+        codeshare:
+          type: object
+        scheduleInstanceKey:
+          type: string
+        statusKey:
+          type: string
+        originalFlight:
+          type: string
+        map:
+          type: string
+    GetFlightsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with flight schedule data.
+        '400':
+          type: string
+          description: Bad Request – error details provided.
+        '401':
+          type: string
+          description: Unauthorized – authentication error.
+        '406':
+          type: string
+          description: Not Acceptable – cannot produce acceptable response.
+        '500':
+          type: string
+          description: Internal Server Error – server error occurred.
+    GetLocationsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with location data in application/json format.
+        '400':
+          type: string
+          description: Bad Request – error details in application/json.
+        '401':
+          type: string
+          description: Unauthorized – error details in application/json.
+        '406':
+          type: string
+          description: Not Acceptable – the server cannot produce a response matching the request's Accept header.
+        '500':
+          type: string
+          description: Internal Server Error – a server error occurred.
+    PostProfileRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Customer’s first name
+        lastName:
+          type: string
+          description: Customer’s surname
+        email:
+          type: string
+          description: Customer’s email address
+        secondaryEmail:
+          type: string
+          description: Customer’s alternative email address
+        country:
+          type: string
+          description: A two-character ISO country code designated to the customer’s country of location
+        content:
+          type: string
+          description: If specified, additional data is included in the API response in the Premium Content group
+        companyName:
+          type: string
+          description: Customer’s company name
+      required:
+      - firstName
+      - lastName
+      - email
+      - country
+      - companyName
+    PostProfileResponse:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Alphanumeric characters. Generated on the creation of the customer profile
+        evtPrimaryConnectionString:
+          type: string
+          description: The primary connection string to the Event Hub
+        evtSecondaryConnectionString:
+          type: string
+          description: The secondary connection string to the Event Hub
+    PatchProfileAccountidRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Customer’s first name
+        lastName:
+          type: string
+          description: Customer’s surname
+        email:
+          type: string
+          description: Customer’s email address
+        secondaryEmail:
+          type: string
+          description: Customer’s alternative email address
+        country:
+          type: string
+          description: A two-character ISO country code designated to the customer’s country of location
+        content:
+          type: string
+          description: If specified, additional data is included in the API response in the Premium Content group
+        companyName:
+          type: string
+          description: Customer’s company name
+      required:
+      - firstName
+      - lastName
+      - email
+      - country
+      - companyName
+    PatchProfileAccountidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK
+        '400':
+          type: string
+          description: Bad Request
+        '404':
+          type: string
+          description: Not Found
+        '406':
+          type: string
+          description: Not Acceptable
+        '409':
+          type: string
+          description: Conflict
+        '422':
+          type: string
+          description: Unprocessable Entity
+        '500':
+          type: string
+          description: Internal Server Error
+    GetStatusResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK – successful response with status data string (nullable).
+        '404':
+          type: string
+          description: Not Found – problem details object.
+        '406':
+          type: string
+          description: Not Acceptable – problem details object.
+        '409':
+          type: string
+          description: Conflict – problem details object.
+        '422':
+          type: string
+          description: Unprocessable Entity – problem details object.
+        '500':
+          type: string
+          description: Internal Server Error – problem details object.
+    GetDeparturedateScheduleinstancekeyResponse:
+      type: object
+      properties:
+        bookingClasses:
+          type: array
+          description: Information relating to the Passenger Reservations Booking Designator (PRBD) and Meals.
+        freightClasses:
+          type: array
+          description: Indicates the type of cargo that can be loaded onto the equipment.
+        restrictions:
+          type: array
+          description: Information provided by a carrier to specify restrictions on carrying traffic or limitations to the carriage of traffic.
+        planeChangeWithoutAircraftChange:
+          type: boolean
+          description: True/False value showing if there is an equipment change enroute where the IATA Aircraft Type code is the same on each
+            leg.
+        onTimePerformance:
+          type: object
+          description: Represents on time indicator and delay and cancelation performance.
+        inFlightServices:
+          type: array
+          description: Denotes the use of in-flight services in relation to the IATA standard.
+        automatedCheckIn:
+          type: boolean
+          description: Identifies if the carrier offers automated check‑in for the flight leg.
+        electronicTicketing:
+          type: boolean
+          description: Used to identify if a flight leg is an electronic ticketing candidate.
+        secureFlightIndicator:
+          type: boolean
+          description: Present when legal requirement to disclose full Secure Flight passenger data for U.S. flights.
+        governmentApproval:
+          type: boolean
+          description: Marker to show service is subject to government approval.
+        statusDetails:
+          type: array
+          description: Details about flight status per leg.
+        seatingCapacity:
+          type: object
+          description: Represents actual and predicted seating capacity.
+        carrier:
+          type: object
+          description: Contains a carrier designator code.
+        serviceSuffix:
+          type: string
+          description: The operational suffix supplied by the carrier.
+        flightNumber:
+          type: integer
+          description: The numeric part of the flight number.
+        sequenceNumber:
+          type: integer
+          description: Sequence of stopping points starting at 0.
+        flightType:
+          type: string
+          description: Flight type definition.
+        departure:
+          type: object
+          description: Departure airport, terminal, date, time, etc.
+        arrival:
+          type: object
+          description: Arrival airport, terminal, date, time, etc.
+        elapsedTime:
+          type: integer
+          description: The duration of the flight.
+        cargoTonnage:
+          type: number
+          description: Cargo tonnage.
+        aircraftType:
+          type: object
+          description: Denotes the equipment type in use.
+        serviceType:
+          type: object
+          description: Single character service type classification.
+        segmentInfo:
+          type: object
+          description: Number of stops and intermediate airports.
+        distance:
+          type: object
+          description: Great‑circle distance information.
+        codeshare:
+          type: object
+          description: Codeshare information.
+        scheduleInstanceKey:
+          type: string
+          description: Unique identifier of schedule instance.
+        statusKey:
+          type: string
+          description: Unique identifier of flight status.
+        originalFlight:
+          type: string
+          description: Link to the original scheduled flight.
+        map:
+          type: string
+          description: Link to the flight map.
+tags:
+- name: Alerts
+- name: Api
+- name: Flight Connections
+- name: Flight Info Alerts
+- name: Flight Instances
+- name: Flights
+- name: Locations
+- name: Profile
+- name: Status

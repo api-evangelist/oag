@@ -1,0 +1,369 @@
+openapi: 3.1.0
+info:
+  title: OAG core API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 4 operation(s) read from 4 public documentation page(s) (each operation
+    names its page in x-source). This is not the provider''s published contract; OAG has published no machine-readable contract that the pipeline
+    could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 20
+    pages-with-code: 1
+    pages-read: 23
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://developers.oag.com
+  - https://developers.oag.com/apis/flight-info-connections-v1
+  - https://developers.oag.com/apis/locations-v1
+  - https://developers.oag.com/apis/schedules
+  x-docs-section: core
+servers:
+- url: https://api.oag.com
+paths:
+  /flight-connections:
+    get:
+      operationId: get_flight_connections
+      tags:
+      - Flight Connections
+      summary: GET Connections
+      description: Retrieves weekly updated global single passenger and cargo connections based on query parameters.
+      x-source: https://developers.oag.com/apis/flight-info-connections-v1
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+        description: API version, e.g., v1
+      - name: DepartureDate
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date or date range in ISO 8601 date format (e.g., YYYY-MM-DD or YYYY-MM-DD/YYYY-MM-DD). The maximum date range
+          is 7 days.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing departure airport.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing arrival airport.
+      - name: DepartureCity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The departure city code as designated by IATA.
+      - name: ArrivalCity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The arrival city code as designated by IATA.
+      - name: Circuity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: A maximum value for the circuity.
+      - name: ConnectionType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, only certain connection types are returned (o = online, i = interline, n = offline).
+      - name: Leg1CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two-character code of the leg 1 assigned by IATA. Accepts comma separated values.
+      - name: Leg2CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two-character code of the leg 2 assigned by IATA. Accepts comma separated values.
+      - name: MinConnectingTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Minimum Leg 1 connection time in minutes.
+      - name: MaxConnectingTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum Leg 1 connection time in minutes.
+      - name: InterAirport
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: If false, connections where Leg 1 Arrival Airport equals Leg 2 Arrival Airport are returned.
+      - name: ViaPoint
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing connecting airport(s). Accepts comma separated values.
+      - name: TotalMaxElapsedTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum total elapsed time for a connection in minutes.
+      - name: Service
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified (p = passenger, c = cargo), only connections matching service type are returned.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return (1‑1000).
+      - name: Cursor
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A cursor string marking a specific item in a list of data.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightConnectionsResponse'
+      x-evidence:
+        kind: documentation
+  /flight-instances/:
+    get:
+      operationId: get_flight_instances
+      tags:
+      - Flight Instances
+      summary: Get flight instances based on departure and arrival criteria.
+      description: Fetches flight schedule data using the provided query parameters.
+      x-source: https://developers.oag.com
+      parameters:
+      - name: DepartureDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date and time.
+      - name: ArrivalDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Arrival date and time.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: IATA or ICAO code of the departure airport.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: IATA or ICAO code of the arrival airport.
+      - name: CodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Comma‑separated list of code types (e.g., IATA,ICAO).
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, e.g., v2.
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /flights:
+    get:
+      operationId: get_flights
+      tags:
+      - Flights
+      summary: Schedules by IATA carrier code
+      description: Retrieve list of direct flight schedules by provided IATA carrier code and other parameters. All requests require a valid API
+        key passed as Subscription-Key in the request header.
+      x-source: https://developers.oag.com/apis/schedules
+      parameters:
+      - name: IataCarrierCode
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A two-character code assigned by the IATA to international airlines.
+      - name: FlightNumber
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A numeric part (up to four digits) of a flight designator.
+      - name: DepartureDate
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Departure date or date range is local date in ISO 8601 date format (e.g. YYYY-MM-DD or YYYY-MM-DD/YYYY-MM-DD).
+      - name: Content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, additional data is included in the API response in the Premium Content group.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return. If specified, the value should be between 1 and 1000.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightsResponse'
+      x-evidence:
+        kind: documentation
+  /locations:
+    get:
+      operationId: get_locations
+      tags:
+      - Locations
+      summary: Locations
+      description: Master Data Locations API enables customers to access industry standard IATA, ICAO and FAA airport codes and related descriptive
+        information.
+      x-source: https://developers.oag.com/apis/locations-v1
+      parameters:
+      - name: AirportCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code assigned by the IATA/ICAO/FAA to an airport. Accepts comma separated values.
+      - name: CodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Code type for Airports. Code type values are IATA, ICAO and FAA. Accepts comma separated values.
+      - name: CountryCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two letter ISO code of a country where an airport is located in. Accepts comma separated values.
+      - name: CityCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code of a city where an airport is located in. Accepts comma separated values.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to return. If specified, the value should be between 1 and 1000.
+      - name: After
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A cursor after refers to a random string of characters which marks a specific item in a list of data.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLocationsResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetFlightConnectionsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with connections array and paging info.
+        '400':
+          type: string
+          description: Bad Request – error details include type, title, status, traceId, errors.
+        '401':
+          type: string
+          description: Unauthorized – error details include statusCode and message.
+        '406':
+          type: string
+          description: Not Acceptable – server cannot produce an acceptable response.
+        '500':
+          type: string
+          description: Internal Server Error – generic server error.
+    GetFlightsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with flight schedule data.
+        '400':
+          type: string
+          description: Bad Request – error details provided.
+        '401':
+          type: string
+          description: Unauthorized – authentication error.
+        '406':
+          type: string
+          description: Not Acceptable – cannot produce acceptable response.
+        '500':
+          type: string
+          description: Internal Server Error – server error occurred.
+    GetLocationsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with location data in application/json format.
+        '400':
+          type: string
+          description: Bad Request – error details in application/json.
+        '401':
+          type: string
+          description: Unauthorized – error details in application/json.
+        '406':
+          type: string
+          description: Not Acceptable – the server cannot produce a response matching the request's Accept header.
+        '500':
+          type: string
+          description: Internal Server Error – a server error occurred.
+tags:
+- name: Flight Connections
+- name: Flight Instances
+- name: Flights
+- name: Locations

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/oag/main/json-schema/oag-get-flight-instances-departuredate-scheduleinstancekey-response-schema.json",
+  "title": "GetFlightInstancesDeparturedateScheduleinstancekeyResponse",
+  "x-generated": "2026-09-23",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/oag-openapi-generated.yml#/components/schemas/GetFlightInstancesDeparturedateScheduleinstancekeyResponse",
+  "type": "object",
+  "properties": {
+    "bookingClasses": {
+      "type": "array"
+    },
+    "freightClasses": {
+      "type": "array"
+    },
+    "restrictions": {
+      "type": "array"
+    },
+    "planeChangeWithoutAircraftChange": {
+      "type": "boolean"
+    },
+    "onTimePerformance": {
+      "type": "object"
+    },
+    "inFlightServices": {
+      "type": "array"
+    },
+    "automatedCheckIn": {
+      "type": "boolean"
+    },
+    "electronicTicketing": {
+      "type": "boolean"
+    },
+    "secureFlightIndicator": {
+      "type": "boolean"
+    },
+    "governmentApproval": {
+      "type": "boolean"
+    },
+    "statusDetails": {
+      "type": "array"
+    },
+    "seatingCapacity": {
+      "type": "object"
+    },
+    "carrier": {
+      "type": "object"
+    },
+    "serviceSuffix": {
+      "type": "string"
+    },
+    "flightNumber": {
+      "type": "integer"
+    },
+    "sequenceNumber": {
+      "type": "integer"
+    },
+    "flightType": {
+      "type": "string"
+    },
+    "departure": {
+      "type": "object"
+    },
+    "arrival": {
+      "type": "object"
+    },
+    "elapsedTime": {
+      "type": "integer"
+    },
+    "cargoTonnage": {
+      "type": "number"
+    },
+    "aircraftType": {
+      "type": "object"
+    },
+    "serviceType": {
+      "type": "object"
+    },
+    "segmentInfo": {
+      "type": "object"
+    },
+    "distance": {
+      "type": "object"
+    },
+    "codeshare": {
+      "type": "object"
+    },
+    "scheduleInstanceKey": {
+      "type": "string"
+    },
+    "statusKey": {
+      "type": "string"
+    },
+    "originalFlight": {
+      "type": "string"
+    },
+    "map": {
+      "type": "string"
+    }
+  }
+}
