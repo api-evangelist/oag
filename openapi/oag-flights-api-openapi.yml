@@ -1,0 +1,113 @@
+openapi: 3.2.0
+info:
+  title: OAG Flights API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 20 operation(s) read from 23 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; OAG has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 20
+    pages-with-code: 1
+    pages-read: 23
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://developers.oag.com/apis/schedules
+  - https://developers.oag.com/apis/locations-v1
+  - https://developers.oag.com/apis/flight-info-v2
+  - https://developers.oag.com/apis/flight-info-alerts-v1
+  - https://developers.oag.com/apis/flight-info-v2/GetFlight
+  - https://developers.oag.com/apis/flight-info-v2/GetFlights
+  - https://developers.oag.com/apis/locations-v1/GetLocations
+  - https://developers.oag.com/apis/flight-info-connections-v1
+  - https://developers.oag.com/apis/flight-info-alerts-v1/status
+  - https://developers.oag.com/apis/schedules/GetActiveSchedules
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlerts
+  - https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+  - https://developers.oag.com/apis/schedules/schedules-iata-carriers
+  - https://developers.oag.com/apis/schedules/schedules-icao-carriers
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccessKey
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateProfile
+  - https://developers.oag.com/apis/flight-info-alerts-v1/completeProfile
+  - https://developers.oag.com/apis/flight-info-connections-v1/Connections
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccountProfile
+  - https://developers.oag.com
+servers:
+- url: https://api.oag.com
+tags:
+- name: Flights
+paths:
+  /flights:
+    get:
+      operationId: get_flights
+      tags:
+      - Flights
+      summary: Schedules by IATA carrier code
+      description: Retrieve list of direct flight schedules by provided IATA carrier code and other parameters. All requests require a valid API key passed as Subscription-Key in the request header.
+      x-source: https://developers.oag.com/apis/schedules
+      parameters:
+      - name: IataCarrierCode
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A two-character code assigned by the IATA to international airlines.
+      - name: FlightNumber
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A numeric part (up to four digits) of a flight designator.
+      - name: DepartureDate
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Departure date or date range is local date in ISO 8601 date format (e.g. YYYY-MM-DD or YYYY-MM-DD/YYYY-MM-DD).
+      - name: Content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, additional data is included in the API response in the Premium Content group.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return. If specified, the value should be between 1 and 1000.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightsResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetFlightsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with flight schedule data.
+        '400':
+          type: string
+          description: Bad Request – error details provided.
+        '401':
+          type: string
+          description: Unauthorized – authentication error.
+        '406':
+          type: string
+          description: Not Acceptable – cannot produce acceptable response.
+        '500':
+          type: string
+          description: Internal Server Error – server error occurred.

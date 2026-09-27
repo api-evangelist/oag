@@ -1,0 +1,329 @@
+openapi: 3.2.0
+info:
+  title: OAG Flight Instances API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 20 operation(s) read from 23 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; OAG has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 20
+    pages-with-code: 1
+    pages-read: 23
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://developers.oag.com/apis/schedules
+  - https://developers.oag.com/apis/locations-v1
+  - https://developers.oag.com/apis/flight-info-v2
+  - https://developers.oag.com/apis/flight-info-alerts-v1
+  - https://developers.oag.com/apis/flight-info-v2/GetFlight
+  - https://developers.oag.com/apis/flight-info-v2/GetFlights
+  - https://developers.oag.com/apis/locations-v1/GetLocations
+  - https://developers.oag.com/apis/flight-info-connections-v1
+  - https://developers.oag.com/apis/flight-info-alerts-v1/status
+  - https://developers.oag.com/apis/schedules/GetActiveSchedules
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlerts
+  - https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+  - https://developers.oag.com/apis/schedules/schedules-iata-carriers
+  - https://developers.oag.com/apis/schedules/schedules-icao-carriers
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccessKey
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateProfile
+  - https://developers.oag.com/apis/flight-info-alerts-v1/completeProfile
+  - https://developers.oag.com/apis/flight-info-connections-v1/Connections
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccountProfile
+  - https://developers.oag.com
+servers:
+- url: https://api.oag.com
+tags:
+- name: Flight Instances
+paths:
+  /flight-instances:
+    get:
+      operationId: get_flight_instances
+      tags:
+      - Flight Instances
+      summary: Direct Flights Returns a paginated list of flight instances matching the…
+      x-source: https://developers.oag.com/apis/flight-info-v2/GetFlights
+      parameters:
+      - name: DepartureDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date and/or time or date and/or time range is local time in ISO 8601 date format (e.g. YYYY-MM-DD[THH:MM] or YYYY-MM-DD[THH:MM]/YYYY-MM-DD[THH:MM]). The maximum date range is 31 days.
+      - name: ArrivalDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Arrival date and/or time or date and/or time range is local time in ISO 8601 date format (e.g. YYYY-MM-DD[THH:MM] or YYYY-MM-DD[THH:MM]/YYYY-MM-DD[THH:MM]). The maximum date range is 31 days.
+      - name: CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Carrier (airline) code assigned either by IATA or ICAO. Accepts comma separated values.
+      - name: FlightNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: A numeric part (up to four digits) of a flight designator.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code assigned by the IATA/ICAO/FAA to an airport location representing departure airport. Accepts comma separated values.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A code assigned by the IATA/ICAO/FAA to an airport location representing arrival airport. Accepts comma separated values.
+      - name: DepartureCountryCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure Country code. Only flights with the specified departure country code are returned. In ISO 3166-1 alpha-2 format.
+      - name: ArrivalCountryCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Arrival Country code. Only flights with the specified arrival country code are returned. In ISO 3166-1 alpha-2 format.
+      - name: AircraftRegistrationNumber
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Aircraft registration number (Tail Number).
+      - name: Content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, additional data is included in the API response. Accepts comma separated values.
+      - name: FlightType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Type of flight: Scheduled, Unscheduled, General Aviation (GA). Accepts comma separated values.'
+      - name: CodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Code type for Carriers and Airports. Code type values are IATA, ICAO - for carriers and airports, FAA - for airports. Accepts comma separated values.
+      - name: ServiceType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Type of service. Accepts either high-level group names (Passenger, Cargo), individual IATA service type codes or 'undefined'.
+      - name: Codeshare
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Codeshare. Operating, Marketing. Only flights for the specified codeshare are returned if specified. Accepts comma separated values.
+      - name: IncludeDiverted
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: When set to true, includes flights that were diverted to the specified Arrival Airport.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return. Value should be between 1 and 1000.
+      - name: After
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A cursor after refers to a random string of characters which marks a specific item in a list of data.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightInstancesResponse'
+      x-evidence:
+        kind: documentation
+  /flight-instances/:
+    get:
+      operationId: getFlightInstances
+      tags:
+      - Flight Instances
+      summary: Get flight instances based on departure and arrival criteria
+      description: Fetches flight schedule data using the provided query parameters.
+      x-source: https://developers.oag.com
+      parameters:
+      - name: DepartureDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date and time.
+      - name: ArrivalDateTime
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Arrival date and time.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: IATA or ICAO code of the departure airport.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: IATA or ICAO code of the arrival airport.
+      - name: CodeType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Comma‑separated list of code types (e.g., IATA,ICAO).
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, e.g., v2.
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+      x-operation-id-source: normalized
+      x-operation-id-original: get_flight_instances
+  /flight-instances/{departuredate}/{scheduleinstancekey}:
+    get:
+      operationId: get_flight_instances_departuredate_scheduleinstancekey
+      tags:
+      - Flight Instances
+      summary: Returns a single flight instance identified by its departure date and schedule…
+      x-source: https://developers.oag.com/apis/flight-info-v2/GetFlight
+      parameters:
+      - name: departuredate
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scheduleinstancekey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, default v2.
+      - name: Subscription-Key
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Valid API key.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightInstancesDeparturedateScheduleinstancekeyResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetFlightInstancesDeparturedateScheduleinstancekeyResponse:
+      type: object
+      properties:
+        bookingClasses:
+          type: array
+        freightClasses:
+          type: array
+        restrictions:
+          type: array
+        planeChangeWithoutAircraftChange:
+          type: boolean
+        onTimePerformance:
+          type: object
+        inFlightServices:
+          type: array
+        automatedCheckIn:
+          type: boolean
+        electronicTicketing:
+          type: boolean
+        secureFlightIndicator:
+          type: boolean
+        governmentApproval:
+          type: boolean
+        statusDetails:
+          type: array
+        seatingCapacity:
+          type: object
+        carrier:
+          type: object
+        serviceSuffix:
+          type: string
+        flightNumber:
+          type: integer
+        sequenceNumber:
+          type: integer
+        flightType:
+          type: string
+        departure:
+          type: object
+        arrival:
+          type: object
+        elapsedTime:
+          type: integer
+        cargoTonnage:
+          type: number
+        aircraftType:
+          type: object
+        serviceType:
+          type: object
+        segmentInfo:
+          type: object
+        distance:
+          type: object
+        codeshare:
+          type: object
+        scheduleInstanceKey:
+          type: string
+        statusKey:
+          type: string
+        originalFlight:
+          type: string
+        map:
+          type: string
+    GetFlightInstancesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Array of flight objects.
+        paging:
+          type: object
+          description: Provides details about the API call (limit, totalCount, totalPages, next).

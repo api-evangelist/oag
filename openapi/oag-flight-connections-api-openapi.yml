@@ -1,0 +1,191 @@
+openapi: 3.2.0
+info:
+  title: OAG Flight Connections API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 20 operation(s) read from 23 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; OAG has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 20
+    pages-with-code: 1
+    pages-read: 23
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://developers.oag.com/apis/schedules
+  - https://developers.oag.com/apis/locations-v1
+  - https://developers.oag.com/apis/flight-info-v2
+  - https://developers.oag.com/apis/flight-info-alerts-v1
+  - https://developers.oag.com/apis/flight-info-v2/GetFlight
+  - https://developers.oag.com/apis/flight-info-v2/GetFlights
+  - https://developers.oag.com/apis/locations-v1/GetLocations
+  - https://developers.oag.com/apis/flight-info-connections-v1
+  - https://developers.oag.com/apis/flight-info-alerts-v1/status
+  - https://developers.oag.com/apis/schedules/GetActiveSchedules
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlerts
+  - https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+  - https://developers.oag.com/apis/schedules/schedules-iata-carriers
+  - https://developers.oag.com/apis/schedules/schedules-icao-carriers
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccessKey
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateProfile
+  - https://developers.oag.com/apis/flight-info-alerts-v1/completeProfile
+  - https://developers.oag.com/apis/flight-info-connections-v1/Connections
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccountProfile
+  - https://developers.oag.com
+servers:
+- url: https://api.oag.com
+tags:
+- name: Flight Connections
+paths:
+  /flight-connections:
+    get:
+      operationId: get_flight_connections
+      tags:
+      - Flight Connections
+      summary: GET Connections
+      description: Retrieves weekly updated global single passenger and cargo connections based on query parameters.
+      x-source: https://developers.oag.com/apis/flight-info-connections-v1
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+        description: API version, e.g., v1
+      - name: DepartureDate
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Departure date or date range in ISO 8601 date format (e.g., YYYY-MM-DD or YYYY-MM-DD/YYYY-MM-DD). The maximum date range is 7 days.
+      - name: DepartureAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing departure airport.
+      - name: ArrivalAirport
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing arrival airport.
+      - name: DepartureCity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The departure city code as designated by IATA.
+      - name: ArrivalCity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The arrival city code as designated by IATA.
+      - name: Circuity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: A maximum value for the circuity.
+      - name: ConnectionType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified, only certain connection types are returned (o = online, i = interline, n = offline).
+      - name: Leg1CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two-character code of the leg 1 assigned by IATA. Accepts comma separated values.
+      - name: Leg2CarrierCode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A two-character code of the leg 2 assigned by IATA. Accepts comma separated values.
+      - name: MinConnectingTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Minimum Leg 1 connection time in minutes.
+      - name: MaxConnectingTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum Leg 1 connection time in minutes.
+      - name: InterAirport
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: If false, connections where Leg 1 Arrival Airport equals Leg 2 Arrival Airport are returned.
+      - name: ViaPoint
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A three-letter IATA code representing connecting airport(s). Accepts comma separated values.
+      - name: TotalMaxElapsedTime
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum total elapsed time for a connection in minutes.
+      - name: Service
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If specified (p = passenger, c = cargo), only connections matching service type are returned.
+      - name: Limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of flights to return (1‑1000).
+      - name: Cursor
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A cursor string marking a specific item in a list of data.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFlightConnectionsResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetFlightConnectionsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Success response with connections array and paging info.
+        '400':
+          type: string
+          description: Bad Request – error details include type, title, status, traceId, errors.
+        '401':
+          type: string
+          description: Unauthorized – error details include statusCode and message.
+        '406':
+          type: string
+          description: Not Acceptable – server cannot produce an acceptable response.
+        '500':
+          type: string
+          description: Internal Server Error – generic server error.

@@ -1,0 +1,98 @@
+openapi: 3.2.0
+info:
+  title: OAG Status API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 20 operation(s) read from 23 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; OAG has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 20
+    pages-with-code: 1
+    pages-read: 23
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://developers.oag.com/apis/schedules
+  - https://developers.oag.com/apis/locations-v1
+  - https://developers.oag.com/apis/flight-info-v2
+  - https://developers.oag.com/apis/flight-info-alerts-v1
+  - https://developers.oag.com/apis/flight-info-v2/GetFlight
+  - https://developers.oag.com/apis/flight-info-v2/GetFlights
+  - https://developers.oag.com/apis/locations-v1/GetLocations
+  - https://developers.oag.com/apis/flight-info-connections-v1
+  - https://developers.oag.com/apis/flight-info-alerts-v1/status
+  - https://developers.oag.com/apis/schedules/GetActiveSchedules
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlerts
+  - https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+  - https://developers.oag.com/apis/schedules/schedules-iata-carriers
+  - https://developers.oag.com/apis/schedules/schedules-icao-carriers
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccessKey
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateProfile
+  - https://developers.oag.com/apis/flight-info-alerts-v1/completeProfile
+  - https://developers.oag.com/apis/flight-info-connections-v1/Connections
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccountProfile
+  - https://developers.oag.com
+servers:
+- url: https://api.oag.com
+tags:
+- name: Status
+paths:
+  /status:
+    get:
+      operationId: get_status
+      tags:
+      - Status
+      summary: Returns the current status of the Flight Info Alerts service
+      description: Returns the current status of the Flight Info Alerts service.
+      x-source: https://developers.oag.com/apis/flight-info-alerts-v1/status
+      parameters:
+      - name: Subscription-Key
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Valid API key
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+        description: API version, e.g., v1
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetStatusResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetStatusResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK – successful response with status data string (nullable).
+        '404':
+          type: string
+          description: Not Found – problem details object.
+        '406':
+          type: string
+          description: Not Acceptable – problem details object.
+        '409':
+          type: string
+          description: Conflict – problem details object.
+        '422':
+          type: string
+          description: Unprocessable Entity – problem details object.
+        '500':
+          type: string
+          description: Internal Server Error – problem details object.

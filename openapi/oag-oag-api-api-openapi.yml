@@ -1,0 +1,179 @@
+openapi: 3.2.0
+info:
+  title: OAG API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 20 operation(s) read from 23 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; OAG has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 20
+    pages-with-code: 1
+    pages-read: 23
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://developers.oag.com/apis/schedules
+  - https://developers.oag.com/apis/locations-v1
+  - https://developers.oag.com/apis/flight-info-v2
+  - https://developers.oag.com/apis/flight-info-alerts-v1
+  - https://developers.oag.com/apis/flight-info-v2/GetFlight
+  - https://developers.oag.com/apis/flight-info-v2/GetFlights
+  - https://developers.oag.com/apis/locations-v1/GetLocations
+  - https://developers.oag.com/apis/flight-info-connections-v1
+  - https://developers.oag.com/apis/flight-info-alerts-v1/status
+  - https://developers.oag.com/apis/schedules/GetActiveSchedules
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAlerts
+  - https://developers.oag.com/apis/flight-info-alerts-v1/createAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/deleteAlert
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateAlert
+  - https://developers.oag.com/apis/schedules/schedules-iata-carriers
+  - https://developers.oag.com/apis/schedules/schedules-icao-carriers
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccessKey
+  - https://developers.oag.com/apis/flight-info-alerts-v1/updateProfile
+  - https://developers.oag.com/apis/flight-info-alerts-v1/completeProfile
+  - https://developers.oag.com/apis/flight-info-connections-v1/Connections
+  - https://developers.oag.com/apis/flight-info-alerts-v1/getAccountProfile
+  - https://developers.oag.com
+servers:
+- url: https://api.oag.com
+tags:
+- name: OAG API
+paths:
+  /{departuredate}/{scheduleinstancekey}:
+    get:
+      operationId: get_departuredate_scheduleinstancekey
+      tags:
+      - OAG API
+      summary: Returns a single flight instance identified by its departure date and schedule…
+      x-source: https://developers.oag.com/apis/flight-info-v2/GetFlight
+      parameters:
+      - name: departuredate
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scheduleinstancekey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: API version, default v2.
+      - name: Subscription-Key
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Valid API key.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDeparturedateScheduleinstancekeyResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetDeparturedateScheduleinstancekeyResponse:
+      type: object
+      properties:
+        bookingClasses:
+          type: array
+          description: Information relating to the Passenger Reservations Booking Designator (PRBD) and Meals.
+        freightClasses:
+          type: array
+          description: Indicates the type of cargo that can be loaded onto the equipment.
+        restrictions:
+          type: array
+          description: Information provided by a carrier to specify restrictions on carrying traffic or limitations to the carriage of traffic.
+        planeChangeWithoutAircraftChange:
+          type: boolean
+          description: True/False value showing if there is an equipment change enroute where the IATA Aircraft Type code is the same on each leg.
+        onTimePerformance:
+          type: object
+          description: Represents on time indicator and delay and cancelation performance.
+        inFlightServices:
+          type: array
+          description: Denotes the use of in-flight services in relation to the IATA standard.
+        automatedCheckIn:
+          type: boolean
+          description: Identifies if the carrier offers automated check‑in for the flight leg.
+        electronicTicketing:
+          type: boolean
+          description: Used to identify if a flight leg is an electronic ticketing candidate.
+        secureFlightIndicator:
+          type: boolean
+          description: Present when legal requirement to disclose full Secure Flight passenger data for U.S. flights.
+        governmentApproval:
+          type: boolean
+          description: Marker to show service is subject to government approval.
+        statusDetails:
+          type: array
+          description: Details about flight status per leg.
+        seatingCapacity:
+          type: object
+          description: Represents actual and predicted seating capacity.
+        carrier:
+          type: object
+          description: Contains a carrier designator code.
+        serviceSuffix:
+          type: string
+          description: The operational suffix supplied by the carrier.
+        flightNumber:
+          type: integer
+          description: The numeric part of the flight number.
+        sequenceNumber:
+          type: integer
+          description: Sequence of stopping points starting at 0.
+        flightType:
+          type: string
+          description: Flight type definition.
+        departure:
+          type: object
+          description: Departure airport, terminal, date, time, etc.
+        arrival:
+          type: object
+          description: Arrival airport, terminal, date, time, etc.
+        elapsedTime:
+          type: integer
+          description: The duration of the flight.
+        cargoTonnage:
+          type: number
+          description: Cargo tonnage.
+        aircraftType:
+          type: object
+          description: Denotes the equipment type in use.
+        serviceType:
+          type: object
+          description: Single character service type classification.
+        segmentInfo:
+          type: object
+          description: Number of stops and intermediate airports.
+        distance:
+          type: object
+          description: Great‑circle distance information.
+        codeshare:
+          type: object
+          description: Codeshare information.
+        scheduleInstanceKey:
+          type: string
+          description: Unique identifier of schedule instance.
+        statusKey:
+          type: string
+          description: Unique identifier of flight status.
+        originalFlight:
+          type: string
+          description: Link to the original scheduled flight.
+        map:
+          type: string
+          description: Link to the flight map.
