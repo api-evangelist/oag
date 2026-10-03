@@ -23,9 +23,18 @@
     "oag-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "oag-openapi-generated.yml: tagged paths GET /{departuredate}/{scheduleinstancekey} -> OAG API",
     "oag-openapi-generated.yml: declared missing tag: OAG API",
-    "apis.yml register: written (+9 apis, 10 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "_ae-authored/oag-core-openapi-generated.yml: archived document superseded by a larger archived document"
+    "_ae-authored/oag-core-openapi-generated.yml: archived document superseded by a larger archived document",
+    "oag-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-flight-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-flight-info-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-flight-instances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-flights-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-oag-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oag-status-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

@@ -121,7 +121,31 @@ components:
         evtSecondaryConnectionString:
           type: string
           description: The secondary connection string to the Event Hub
-    PatchProfileAccountidRequest:
+    PatchProfileAccountidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK
+        '400':
+          type: string
+          description: Bad Request
+        '404':
+          type: string
+          description: Not Found
+        '406':
+          type: string
+          description: Not Acceptable
+        '409':
+          type: string
+          description: Conflict
+        '422':
+          type: string
+          description: Unprocessable Entity
+        '500':
+          type: string
+          description: Internal Server Error
+    PostProfileRequest:
       type: object
       properties:
         firstName:
@@ -151,31 +175,7 @@ components:
       - email
       - country
       - companyName
-    PatchProfileAccountidResponse:
-      type: object
-      properties:
-        '200':
-          type: string
-          description: OK
-        '400':
-          type: string
-          description: Bad Request
-        '404':
-          type: string
-          description: Not Found
-        '406':
-          type: string
-          description: Not Acceptable
-        '409':
-          type: string
-          description: Conflict
-        '422':
-          type: string
-          description: Unprocessable Entity
-        '500':
-          type: string
-          description: Internal Server Error
-    PostProfileRequest:
+    PatchProfileAccountidRequest:
       type: object
       properties:
         firstName:
