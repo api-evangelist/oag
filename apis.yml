@@ -204,6 +204,8 @@ apis:
   humanURL: https://developers.oag.com/apis/flight-info-v2
   baseURL: https://api.oag.com
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -250,6 +252,8 @@ apis:
   humanURL: https://developers.oag.com/apis/flight-info-v2
   baseURL: https://api.oag.com
   tags:
+  - Profiles
+  tags_raw:
   - Profile
   properties:
   - type: OpenAPI
