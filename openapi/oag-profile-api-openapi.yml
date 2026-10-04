@@ -145,7 +145,7 @@ components:
         '500':
           type: string
           description: Internal Server Error
-    PostProfileRequest:
+    PatchProfileAccountidRequest:
       type: object
       properties:
         firstName:
@@ -175,7 +175,7 @@ components:
       - email
       - country
       - companyName
-    PatchProfileAccountidRequest:
+    PostProfileRequest:
       type: object
       properties:
         firstName:
