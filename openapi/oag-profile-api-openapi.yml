@@ -109,72 +109,6 @@ paths:
         kind: documentation
 components:
   schemas:
-    PostProfileResponse:
-      type: object
-      properties:
-        accountId:
-          type: string
-          description: Alphanumeric characters. Generated on the creation of the customer profile
-        evtPrimaryConnectionString:
-          type: string
-          description: The primary connection string to the Event Hub
-        evtSecondaryConnectionString:
-          type: string
-          description: The secondary connection string to the Event Hub
-    PatchProfileAccountidResponse:
-      type: object
-      properties:
-        '200':
-          type: string
-          description: OK
-        '400':
-          type: string
-          description: Bad Request
-        '404':
-          type: string
-          description: Not Found
-        '406':
-          type: string
-          description: Not Acceptable
-        '409':
-          type: string
-          description: Conflict
-        '422':
-          type: string
-          description: Unprocessable Entity
-        '500':
-          type: string
-          description: Internal Server Error
-    PatchProfileAccountidRequest:
-      type: object
-      properties:
-        firstName:
-          type: string
-          description: Customer’s first name
-        lastName:
-          type: string
-          description: Customer’s surname
-        email:
-          type: string
-          description: Customer’s email address
-        secondaryEmail:
-          type: string
-          description: Customer’s alternative email address
-        country:
-          type: string
-          description: A two-character ISO country code designated to the customer’s country of location
-        content:
-          type: string
-          description: If specified, additional data is included in the API response in the Premium Content group
-        companyName:
-          type: string
-          description: Customer’s company name
-      required:
-      - firstName
-      - lastName
-      - email
-      - country
-      - companyName
     PostProfileRequest:
       type: object
       properties:
@@ -205,3 +139,69 @@ components:
       - email
       - country
       - companyName
+    PatchProfileAccountidRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Customer’s first name
+        lastName:
+          type: string
+          description: Customer’s surname
+        email:
+          type: string
+          description: Customer’s email address
+        secondaryEmail:
+          type: string
+          description: Customer’s alternative email address
+        country:
+          type: string
+          description: A two-character ISO country code designated to the customer’s country of location
+        content:
+          type: string
+          description: If specified, additional data is included in the API response in the Premium Content group
+        companyName:
+          type: string
+          description: Customer’s company name
+      required:
+      - firstName
+      - lastName
+      - email
+      - country
+      - companyName
+    PatchProfileAccountidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK
+        '400':
+          type: string
+          description: Bad Request
+        '404':
+          type: string
+          description: Not Found
+        '406':
+          type: string
+          description: Not Acceptable
+        '409':
+          type: string
+          description: Conflict
+        '422':
+          type: string
+          description: Unprocessable Entity
+        '500':
+          type: string
+          description: Internal Server Error
+    PostProfileResponse:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Alphanumeric characters. Generated on the creation of the customer profile
+        evtPrimaryConnectionString:
+          type: string
+          description: The primary connection string to the Event Hub
+        evtSecondaryConnectionString:
+          type: string
+          description: The secondary connection string to the Event Hub

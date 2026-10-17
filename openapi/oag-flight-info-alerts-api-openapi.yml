@@ -197,24 +197,83 @@ paths:
         collapsed_from: 2 example path(s) differing only at flightinfoalertId
 components:
   schemas:
-    DeleteFlightInfoAlertsAlertsAlertidResponse:
+    PatchFlightInfoAlertsAlertsResponse:
       type: object
       properties:
         '200':
           type: string
-          description: OK
+          description: OK – successful update of alert configuration.
         '404':
           type: string
-          description: Not Found
+          description: Not Found – alert does not exist.
         '406':
           type: string
-          description: Not Acceptable
+          description: Not Acceptable – request format not acceptable.
         '422':
           type: string
-          description: Unprocessable Entity
+          description: Unprocessable Entity – validation errors.
         '500':
           type: string
-          description: Internal Server Error
+          description: Internal Server Error – unexpected server error.
+    GetFlightInfoAlertsAlertsAlertidResponse:
+      type: object
+      properties:
+        alertId:
+          type: string
+        accountId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        iataCarrierCode:
+          type: string
+        icaoCarrierCode:
+          type: string
+        flightNumber:
+          type: integer
+        fromFlight:
+          type: integer
+        toFlight:
+          type: integer
+        departureAirport:
+          type: string
+        arrivalAirport:
+          type: string
+        alertType:
+          type: string
+        active:
+          type: boolean
+        content:
+          type: string
+        departureDate:
+          type: string
+        arrivalDate:
+          type: string
+        createdTimestamp:
+          type: string
+        lastUpdatedTimestamp:
+          type: string
+        deleted:
+          type: boolean
+        schedules:
+          type: boolean
+        status:
+          type: boolean
+        gaFlights:
+          type: boolean
+        unscheduledFlights:
+          type: boolean
+        codeshare:
+          type: boolean
+        estimatedArrivalTimeThreshold:
+          type: integer
+        estimatedDepartureTimeThreshold:
+          type: integer
+        changeIndicator:
+          type: boolean
+        statusChangeFilters:
+          type: object
     PostFlightInfoAlertsFlightinfoalertidRequest:
       type: object
       properties:
@@ -287,6 +346,48 @@ components:
       required:
       - accountId
       - alertType
+    GetFlightInfoAlertsProfileAccountidResponse:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Customer’s first name
+        lastName:
+          type: string
+          description: Customer’s surname
+        email:
+          type: string
+          description: Customer’s email address
+        secondaryEmail:
+          type: string
+          description: Customer’s alternative email address
+        country:
+          type: string
+          description: A two-character ISO country code designated to the customer’s country of location
+        content:
+          type: string
+          description: If specified, additional data is included in the API response in the Premium Content group
+        companyName:
+          type: string
+          description: Customer’s company name
+    DeleteFlightInfoAlertsAlertsAlertidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK
+        '404':
+          type: string
+          description: Not Found
+        '406':
+          type: string
+          description: Not Acceptable
+        '422':
+          type: string
+          description: Unprocessable Entity
+        '500':
+          type: string
+          description: Internal Server Error
     PatchFlightInfoAlertsAlertsRequest:
       type: object
       properties:
@@ -379,101 +480,6 @@ components:
           description: If value is "false", will ignore flight updates that only have a change in aircraftType.
       required:
       - alertId
-    GetFlightInfoAlertsAccountsAccountidAccesskeyResponse:
-      type: object
-      properties:
-        '200':
-          type: string
-          description: OK – successful response with access key details.
-        '404':
-          type: string
-          description: Not Found – error details.
-        '406':
-          type: string
-          description: Not Acceptable – error details.
-        '422':
-          type: string
-          description: Unprocessable Entity – error details.
-        '500':
-          type: string
-          description: Internal Server Error – error details.
-    PatchFlightInfoAlertsAlertsResponse:
-      type: object
-      properties:
-        '200':
-          type: string
-          description: OK – successful update of alert configuration.
-        '404':
-          type: string
-          description: Not Found – alert does not exist.
-        '406':
-          type: string
-          description: Not Acceptable – request format not acceptable.
-        '422':
-          type: string
-          description: Unprocessable Entity – validation errors.
-        '500':
-          type: string
-          description: Internal Server Error – unexpected server error.
-    GetFlightInfoAlertsAlertsAlertidResponse:
-      type: object
-      properties:
-        alertId:
-          type: string
-        accountId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        iataCarrierCode:
-          type: string
-        icaoCarrierCode:
-          type: string
-        flightNumber:
-          type: integer
-        fromFlight:
-          type: integer
-        toFlight:
-          type: integer
-        departureAirport:
-          type: string
-        arrivalAirport:
-          type: string
-        alertType:
-          type: string
-        active:
-          type: boolean
-        content:
-          type: string
-        departureDate:
-          type: string
-        arrivalDate:
-          type: string
-        createdTimestamp:
-          type: string
-        lastUpdatedTimestamp:
-          type: string
-        deleted:
-          type: boolean
-        schedules:
-          type: boolean
-        status:
-          type: boolean
-        gaFlights:
-          type: boolean
-        unscheduledFlights:
-          type: boolean
-        codeshare:
-          type: boolean
-        estimatedArrivalTimeThreshold:
-          type: integer
-        estimatedDepartureTimeThreshold:
-          type: integer
-        changeIndicator:
-          type: boolean
-        statusChangeFilters:
-          type: object
     PostFlightInfoAlertsFlightinfoalertidResponse:
       type: object
       properties:
@@ -495,27 +501,21 @@ components:
         '500':
           type: string
           description: Internal Server Error – server side failure.
-    GetFlightInfoAlertsProfileAccountidResponse:
+    GetFlightInfoAlertsAccountsAccountidAccesskeyResponse:
       type: object
       properties:
-        firstName:
+        '200':
           type: string
-          description: Customer’s first name
-        lastName:
+          description: OK – successful response with access key details.
+        '404':
           type: string
-          description: Customer’s surname
-        email:
+          description: Not Found – error details.
+        '406':
           type: string
-          description: Customer’s email address
-        secondaryEmail:
+          description: Not Acceptable – error details.
+        '422':
           type: string
-          description: Customer’s alternative email address
-        country:
+          description: Unprocessable Entity – error details.
+        '500':
           type: string
-          description: A two-character ISO country code designated to the customer’s country of location
-        content:
-          type: string
-          description: If specified, additional data is included in the API response in the Premium Content group
-        companyName:
-          type: string
-          description: Customer’s company name
+          description: Internal Server Error – error details.

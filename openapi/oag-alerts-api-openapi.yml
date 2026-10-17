@@ -139,24 +139,24 @@ paths:
         kind: documentation
 components:
   schemas:
-    DeleteAlertsAlertidResponse:
+    GetAlertsResponse:
       type: object
       properties:
         '200':
           type: string
-          description: OK
+          description: OK – list of alert configurations returned as an array of objects with the fields defined in AlertParameter.
         '404':
           type: string
-          description: Not Found
+          description: Not Found – error object with timestamp, status, message, detail, subErrors.
         '406':
           type: string
-          description: Not Acceptable
+          description: Not Acceptable – error object with timestamp, status, message, detail, subErrors.
         '422':
           type: string
-          description: Unprocessable Entity
+          description: Unprocessable Entity – error object with timestamp, status, message, detail, subErrors.
         '500':
           type: string
-          description: Internal Server Error
+          description: Internal Server Error – error object with timestamp, status, message, detail, subErrors.
     PatchAlertsRequest:
       type: object
       properties:
@@ -249,6 +249,63 @@ components:
           description: If value is "false", will ignore flight updates that only have a change in aircraftType.
       required:
       - alertId
+    PatchAlertsResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK – successful update of alert configuration.
+        '404':
+          type: string
+          description: Not Found – alert does not exist.
+        '406':
+          type: string
+          description: Not Acceptable – request format not acceptable.
+        '422':
+          type: string
+          description: Unprocessable Entity – validation errors.
+        '500':
+          type: string
+          description: Internal Server Error – unexpected server error.
+    PostAlertsResponse:
+      type: object
+      properties:
+        '201':
+          type: string
+          description: Created – successful creation of alert.
+        '400':
+          type: string
+          description: Bad Request – validation errors.
+        '404':
+          type: string
+          description: Not Found – resource not found.
+        '406':
+          type: string
+          description: Not Acceptable – request not acceptable.
+        '422':
+          type: string
+          description: Unprocessable Entity – semantic errors.
+        '500':
+          type: string
+          description: Internal Server Error – server side failure.
+    DeleteAlertsAlertidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: OK
+        '404':
+          type: string
+          description: Not Found
+        '406':
+          type: string
+          description: Not Acceptable
+        '422':
+          type: string
+          description: Unprocessable Entity
+        '500':
+          type: string
+          description: Internal Server Error
     PostAlertsRequest:
       type: object
       properties:
@@ -321,60 +378,3 @@ components:
       required:
       - accountId
       - alertType
-    PatchAlertsResponse:
-      type: object
-      properties:
-        '200':
-          type: string
-          description: OK – successful update of alert configuration.
-        '404':
-          type: string
-          description: Not Found – alert does not exist.
-        '406':
-          type: string
-          description: Not Acceptable – request format not acceptable.
-        '422':
-          type: string
-          description: Unprocessable Entity – validation errors.
-        '500':
-          type: string
-          description: Internal Server Error – unexpected server error.
-    GetAlertsResponse:
-      type: object
-      properties:
-        '200':
-          type: string
-          description: OK – list of alert configurations returned as an array of objects with the fields defined in AlertParameter.
-        '404':
-          type: string
-          description: Not Found – error object with timestamp, status, message, detail, subErrors.
-        '406':
-          type: string
-          description: Not Acceptable – error object with timestamp, status, message, detail, subErrors.
-        '422':
-          type: string
-          description: Unprocessable Entity – error object with timestamp, status, message, detail, subErrors.
-        '500':
-          type: string
-          description: Internal Server Error – error object with timestamp, status, message, detail, subErrors.
-    PostAlertsResponse:
-      type: object
-      properties:
-        '201':
-          type: string
-          description: Created – successful creation of alert.
-        '400':
-          type: string
-          description: Bad Request – validation errors.
-        '404':
-          type: string
-          description: Not Found – resource not found.
-        '406':
-          type: string
-          description: Not Acceptable – request not acceptable.
-        '422':
-          type: string
-          description: Unprocessable Entity – semantic errors.
-        '500':
-          type: string
-          description: Internal Server Error – server side failure.
